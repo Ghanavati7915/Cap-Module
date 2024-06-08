@@ -1,6 +1,6 @@
 {
-  "name": "@cap/nuxt3-oauth2",
-  "description": "The functions developed by Cap company to establish a connection with the server and also use the services of OAuth2",
+  "name": "@cap/module",
+  "description": "The functions developed by Cap company to establish a connection with the server and also use the services of OAuth2 And IndexedDB",
   "version": "0.0.1",
   "repository": "https://github.com/Ghanavati7915/Cap-Nuxt3-OAUTH2-NPMPackage",
   "homepage": "https://github.com/Ghanavati7915",
@@ -13,12 +13,18 @@
   "license": "MIT",
   "type": "module",
   "keywords": [
-    "ghanavati",
     "cap",
     "oauth2",
+    "axios",
+    "indexedDB",
+    "iran",
+    "ghanavati",
     "nuxt",
     "nuxt3",
-    "nuxt-module"
+    "nuxt-module",
+    "capModule",
+    "cap_module",
+    "cap-module"
   ],
   "author": "Ahmad Ghanavati",
   "exports": {
@@ -37,6 +43,7 @@
     "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
+    "dev:generate": "nuxi generate playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "releaseWithLint": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
@@ -46,7 +53,10 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.11.2"
+    "@nuxt/kit": "^3.11.2",
+    "axios": "^1.7.2",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.2.0",

@@ -1,0 +1,20 @@
+{
+  "db_name": "CapDBName",
+  "client_id": "CapAppNAME",
+  "is_multi_token": true,
+  "environment": "Development",
+  "api_methods" : {
+    "user_info": "Auth/UserInfo",
+    "authorization_by_app_code": "Auth/AuthorizationByAppCode"
+  },
+  "production" : {
+    "base_url" : "https://b.companyName.com",
+    "redirect_uri": "https://companyName.com/landing",
+    "sso_site_url": "https://sso.companyName.com"
+  },
+  "development" : {
+    "base_url" : "https://b.companyName.com",
+    "redirect_uri": "http://localhost:3000",
+    "sso_site_url": "https://sso.companyName.com"
+  }
+}
