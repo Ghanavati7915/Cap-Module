@@ -1,11 +1,11 @@
 <template>
-  <div>
-      <p> Cap Module From Nuxt module ,  <h2>playground!</h2> </p>
-      <p> ------------------- LogIn / LogOut </p>
+  <div style="padding:20px">
+      <div> Cap Module From Nuxt module ,  <span style="font-weight: bold;font-size: large">playground!</span> </div>
+      <p> LogIn / LogOut </p>
       <button v-if="!user" @click="login">LOGIN</button>
       <button v-if="user" @click="log_out">LOGOUT</button>
     <div v-if="user">
-      <p> ------------------- User Info </p>
+      <p>  User Info </p>
       <p>{{user}}</p>
     </div>
   </div>
