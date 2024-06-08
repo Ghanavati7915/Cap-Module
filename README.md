@@ -12,6 +12,7 @@ Manage Storage, Login and Register Users and API Caller in CAPModule package man
 * **SSO :** Using `Single Sign On` Services From `CAPco`.
 * **API With Credentials.** Axios Combine With SSO Login And Set Token Automatically.
 
+Last Testing With Nuxt Version : **3.11.2**
 
 ## Sponsors
 <table>
