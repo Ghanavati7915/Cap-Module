@@ -4,6 +4,7 @@ import { setup, $fetch } from '@nuxt/test-utils/e2e'
 
 describe('ssr', async () => {
   await setup({
+    //@ts-ignore
     rootDir: fileURLToPath(new URL('./fixtures/basic', import.meta.url)),
   })
 

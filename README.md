@@ -45,22 +45,22 @@ It was decided to prepare a complete package of all the company's requirements a
 Installing Package To Your Project With : 
 - pnpm Package Manager :
 ```shell
- pnpm install @cap/module latest
+ pnpm install cap-module latest
 ```
 - OR npm Package Manager :
 ```shell
- npm install @cap/module latest
+ npm install cap-module latest
 ```
 - OR yarn Package Manager :
 ```shell
- yarn add @cap/module latest
+ yarn add cap-module latest
 ```
 --------------------------------
 
-Then, add **@cap/module** to the modules section of your Nuxt configuration:
+Then, add **cap-module** to the modules section of your Nuxt configuration:
 ```javascript
 export default defineNuxtConfig({
-  modules: ['@cap/module']
+  modules: ['cap-module']
 })
 ```
 
@@ -216,11 +216,11 @@ Author : [Ahmad Ghanavati](mailto:ahmad_ghanavati.ir)
 
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/nuxt3-db/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://www.npmjs.com/package/nuxt3-db
+[npm-version-src]: https://www.npmjs.com/package/cap-module/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://www.npmjs.com/package/cap-module
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/nuxt3-db.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://www.npmjs.com/package/nuxt3-db
+[npm-downloads-src]: https://img.shields.io/npm/dt/cap-module.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://www.npmjs.com/package/cap-module
 
-[license-src]: https://img.shields.io/npm/l/nuxt3-db.svg?style=flat&colorA=18181B&colorB=28CF8D
-[license-href]: https://www.npmjs.com/package/nuxt3-db
+[license-src]: https://img.shields.io/npm/l/cap-module.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://www.npmjs.com/package/cap-module

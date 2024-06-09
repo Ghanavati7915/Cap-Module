@@ -1,10 +1,10 @@
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, addImportsDir } from '@nuxt/kit'
-import ModuleOptions from './interface/moduleOptions';
+import type  ModuleOptions from './interface/moduleOptions';
 
 // Define the Nuxt module
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'capModule', // Name of the module
+    name: 'cap-module', // Name of the module
     configKey: 'CapModule', // Configuration key in nuxt.config
   },
   // Default configuration options for the Nuxt module
