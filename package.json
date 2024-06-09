@@ -1,8 +1,11 @@
 {
   "name": "cap-module",
   "description": "The functions developed by Cap company to establish a connection with the server and also use the services of OAuth2 And IndexedDB",
-  "version": "0.0.6",
-  "repository": "https://github.com/Ghanavati7915/Cap-Module",
+  "version": "0.0.7",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ghanavati7915/Cap-Module.git"
+  },
   "homepage": "https://github.com/Ghanavati7915",
   "bugs": "https://github.com/Ghanavati7915/Cap-Module/issues",
   "changelog": {
