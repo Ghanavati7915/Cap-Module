@@ -4,6 +4,8 @@ Auth , API Caller , IndexedDB
 Developed By : [CAP Company](https://i-cap.ir) , Ahmad Ghanavati
 
 
+## v0.0.2
+
 ## Change Log :
 ## v0.0.1
 - add Login  function
