@@ -1,3 +1,4 @@
+import { ref } from 'vue'; // Add this line
 //#region Imports
 // @ts-ignore
 import CapModule from '#capModule'; // Import CapModule for configuration details
