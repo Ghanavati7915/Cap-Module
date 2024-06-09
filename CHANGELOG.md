@@ -4,6 +4,18 @@ Auth , API Caller , IndexedDB
 Developed By : [CAP Company](https://i-cap.ir) , Ahmad Ghanavati
 
 
+## v0.0.4
+
+[compare changes](https://undefined/undefined/compare/v0.0.5...v0.0.4)
+
+### 🏡 Chore
+
+- **release:** V0.0.3 ([0b6ca16](https://undefined/undefined/commit/0b6ca16))
+
+### ❤️ Contributors
+
+- Ahmad Ghanavati ([@Ghanavati7915](http://github.com/Ghanavati7915))
+
 ## v0.0.3
 
 [compare changes](https://undefined/undefined/compare/v0.0.5...v0.0.3)
