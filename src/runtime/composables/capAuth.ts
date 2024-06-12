@@ -35,7 +35,6 @@ export function useCapAuth() {
 
       let internalRedirect = ''
       if (redirect_to_internal_page) internalRedirect = `?internalPage = ${redirect_to_internal_page}`
-      if
 
       // Redirect to SSO site with the appropriate parameters
       window.location.href = `${environment.value === 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/oauth/auth?protocol=${protocol.value}&response_type=${response_type.value}&${access_type.value}&client_id=${client_id.value}&redirect_uri=${environment.value === 'Production' ? redirect_uri_production.value + internalRedirect : redirect_uri_development.value + internalRedirect }&scope=${scope.value}&state=${state.value}&${code_challenge_method.value}`;

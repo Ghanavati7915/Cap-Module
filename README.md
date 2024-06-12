@@ -104,6 +104,14 @@ export default defineNuxtConfig({
 
 By calling this method, the user is transferred to the SSO page in the HUB according to the project settings, and after performing the login or register operation, she is redirected to the page specified in the settings with the name CallBackURL.
 
+**Trick** : To add the title or address of a specific page to the Redirect value during login, use the following method : 
+```javascript
+    <script setup lang="ts">
+        const { login } = useCapAuth();
+        await login('users');
+    </script>
+```
+
 - **logout**
 
 By calling this method, all the information related to the logged in user will be removed from the database created in the browser, and after that the developer can issue the transfer command to the guest page.
