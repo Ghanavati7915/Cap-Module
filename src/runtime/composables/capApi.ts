@@ -1,4 +1,5 @@
 //#region Imports
+import { ref } from 'vue'; // ref From Vue
 // @ts-ignore
 import CapModule from '#capModule'; // Import CapModule
 import axios from "axios"; // Import axios for making HTTP requests
@@ -8,8 +9,8 @@ import { IndexDBGet } from "./indexedDB"; // Import function to get data from In
 // Function to use Cap API
 export function useCapApi() {
   // Reactive references to store base URL and access token
-  const base_url = ref<null | string>(null);
-  const access_token = ref<null | string>(null);
+  const base_url = ref<null | string | unknown>(null);
+  const access_token = ref<null | string | unknown>(null);
 
   // Function to create and configure an axios instance
   const useAPI = async () => {

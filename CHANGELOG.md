@@ -2,7 +2,9 @@
 Auth , API Caller , IndexedDB
 
 Developed By : [CAP Company](https://i-cap.ir) , Ahmad Ghanavati
-
+## v0.0.8
+- add redirect To InternalPage Field in Login Function
+- fix some issue
 
 ## v0.0.7
 
