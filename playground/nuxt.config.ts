@@ -2,10 +2,13 @@ export default defineNuxtConfig({
   modules: ['../src/module'],
   ssr:false,
   CapModule: {
-    db_name:'',
     client_id:'',
     is_multi_token: true,
     environment: "Development",
+    database:{
+      db_name:'',
+      tables_name:[],
+    },
     api_methods : {
       user_info: "",
       authorization_by_app_code: ""

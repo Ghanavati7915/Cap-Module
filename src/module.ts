@@ -9,10 +9,13 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options for the Nuxt module
   defaults: {
-    db_name: '',
     client_id: '',
     is_multi_token: false,
     environment: 'Development',
+    database:{
+      db_name: '',
+      tables_name: [],
+    },
     api_methods: {
       user_info: '',
       authorization_by_app_code: ''

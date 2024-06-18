@@ -4,6 +4,11 @@
       <p> LogIn / LogOut </p>
       <button v-if="!user" @click="login">LOGIN</button>
       <button v-if="user" @click="log_out">LOGOUT</button>
+      <button @click="insertFakeData('fake','fname','alireza')">insertFakeData 1</button>
+      <button @click="insertFakeData('fake','fname','saman')">insertFakeData 2</button>
+      <button @click="insertFakeData('fake','lname','karami')">insertFakeData 3</button>
+      <button @click="insertFakeData('users','hello','salam Azizam')">insertFakeData 4</button>
+    <button @click="insertFakeData('config','token','aidwjwoajhogheruighergerg')">insertFakeData 5</button>
     <div v-if="user">
       <p>  User Info </p>
       <p>{{user}}</p>
@@ -27,6 +32,10 @@ onMounted(async () => {
     getUserData();
   }
 })
+
+const insertFakeData = async (table:string,key:string,value:string) => {
+  await IndexDBInsert(table, key , value)
+}
 
 const getUserData = async () => {
   user.value = await IndexDBGet('config', 'UserInfo')

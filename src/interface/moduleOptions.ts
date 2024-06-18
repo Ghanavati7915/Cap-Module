@@ -4,13 +4,7 @@
  * Interface representing the options for the module configuration.
  */
 export default interface ModuleOptions {
-  //#region Database and Client Configuration
-
-  /**
-   * Name of the database.
-   */
-  db_name: string;
-
+  //#region Client Configuration
   /**
    * Client ID for authentication purposes.
    */
@@ -21,6 +15,18 @@ export default interface ModuleOptions {
    */
   is_multi_token: boolean;
 
+
+  //#region Database and Client Configuration
+  database:{
+    /**
+     * Name of the database.
+     */
+    db_name: string;
+    /**
+     * Name of the database.
+     */
+    tables_name:string[];
+  }
   //#endregion
 
   //#region Environment Settings

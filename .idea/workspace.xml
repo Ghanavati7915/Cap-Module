@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- fix some issue">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- add Try Catch For IndexedDB functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/playground/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/playground/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/public/cap_module_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface/moduleOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/moduleOptions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/config.client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/config.client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,30 +37,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev:prepare.executor&quot;: &quot;Run&quot;,
-    &quot;npm.prepack.executor&quot;: &quot;Run&quot;,
-    &quot;npm.release.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "npm.dev:prepare.executor": "Run",
+    "npm.prepack.executor": "Run",
+    "npm.release.executor": "Run",
+    "npm.test.executor": "Run",
+    "ts.external.directory.path": "F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.release">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev:prepare" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -99,6 +116,7 @@
       <list>
         <item itemvalue="npm.release" />
         <item itemvalue="npm.prepack" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev:prepare" />
         <item itemvalue="npm.test" />
       </list>
@@ -123,7 +141,8 @@
       <workItem from="1718195558085" duration="1147000" />
       <workItem from="1718197875599" duration="216000" />
       <workItem from="1718536976830" duration="464000" />
-      <workItem from="1718696990985" duration="1985000" />
+      <workItem from="1718696990985" duration="3056000" />
+      <workItem from="1718700203496" duration="15320000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -160,7 +179,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۰۵" />
       <updated>1718197964827</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL‎−۰۰۰۰۶" summary="- add Try Catch For IndexedDB functions">
+      <option name="closed" value="true" />
+      <created>1718699075675</created>
+      <option name="number" value="LOCAL‎−۰۰۰۰۶" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۰۶" />
+      <updated>1718699075675</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +199,7 @@
     <MESSAGE value="- add redirect To InternalPage Field in Login Function&#10;- fix some issue" />
     <MESSAGE value="- fix some issue&#10;- update Readme" />
     <MESSAGE value="- fix some issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix some issue" />
+    <MESSAGE value="- add Try Catch For IndexedDB functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add Try Catch For IndexedDB functions" />
   </component>
 </project>

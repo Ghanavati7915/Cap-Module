@@ -1,8 +1,12 @@
 {
-  "db_name": "CapDBName",
+
   "client_id": "CapAppNAME",
   "is_multi_token": true,
   "environment": "Development",
+  "database" : {
+    "db_name": "CapDBName",
+    "tables_name" : ["config","fake","users"]
+  },
   "api_methods" : {
     "user_info": "Auth/UserInfo",
     "authorization_by_app_code": "Auth/AuthorizationByAppCode"
