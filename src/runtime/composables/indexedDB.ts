@@ -15,7 +15,6 @@ export const IndexDB = (): Promise<IDBDatabase | null> => {
   try {
     return new Promise((resolve, reject) => {
       DB_NAME = CapModule.database.db_name;
-      debugger;
       if (DB) resolve(DB);
       else {
         // Open IndexedDB
