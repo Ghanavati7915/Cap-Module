@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme">
-      <change afterPath="$PROJECT_DIR$/playground/.output/nitro.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/200.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/ClE640dA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/DR9i232k.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/D_DrZYj5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/DzOtC3uz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/meta/36117112-8c43-45f9-9fb0-06fb272401a8.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playground/.output/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/B8CbKQw9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/BWBGYW3R.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/CPBkSwgp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/DmwVzsUl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/latest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/meta/6c9dd941-0b8f-477e-8f99-3b1fc6635d0d.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
-    </list>
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,7 +151,7 @@
       <workItem from="1720964414423" duration="28000" />
       <workItem from="1721204960214" duration="5567000" />
       <workItem from="1721455846283" duration="12974000" />
-      <workItem from="1721540852617" duration="15101000" />
+      <workItem from="1721540852617" duration="15643000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -242,7 +223,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۰" />
       <updated>1721561819121</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎−۰۰۰۱۱" summary="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme">
+      <option name="closed" value="true" />
+      <created>1721568766164</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۱" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۱" />
+      <updated>1721568766164</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
