@@ -32,7 +32,7 @@ export function useCapAuth() {
   // Function to initiate login process
   const login = async (redirect_to_internal_page : string | null = null) => {
     if (process.client) {
-      state.value = await generateStateCode(); // Generate a state code
+      state.value = generateStateCode(); // Generate a state code
       await IndexDBInsert('config', 'loginStateCode', state.value); // Store the state code in IndexedDB
 
       let internalRedirect = ''

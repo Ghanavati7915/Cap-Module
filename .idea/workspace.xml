@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme">
+      <change afterPath="$PROJECT_DIR$/playground/.output/nitro.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/200.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/ClE640dA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/DR9i232k.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/D_DrZYj5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/DzOtC3uz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/meta/36117112-8c43-45f9-9fb0-06fb272401a8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playground/.output/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/playground/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/public/cap_module_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface/moduleOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/moduleOptions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/B8CbKQw9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/BWBGYW3R.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/CPBkSwgp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/DmwVzsUl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/latest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/meta/6c9dd941-0b8f-477e-8f99-3b1fc6635d0d.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/config.client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/config.client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +34,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -40,36 +50,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:prepare.executor&quot;: &quot;Run&quot;,
-    &quot;npm.prepack.executor&quot;: &quot;Run&quot;,
-    &quot;npm.release.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "npm.dev:build.executor": "Run",
+    "npm.dev:generate.executor": "Run",
+    "npm.dev:prepare.executor": "Run",
+    "npm.lint.executor": "Run",
+    "npm.prepack.executor": "Run",
+    "npm.release.executor": "Run",
+    "npm.test.executor": "Run",
+    "ts.external.directory.path": "F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="npm.dev:prepare">
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager" selected="npm.release">
+    <configuration name="dev:build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev" />
+        <script value="dev:build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev:generate" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev:generate" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -80,16 +103,6 @@
       <command value="run" />
       <scripts>
         <script value="dev:prepare" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="prepack" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="prepack" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -117,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev:prepare" />
         <item itemvalue="npm.release" />
-        <item itemvalue="npm.prepack" />
-        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev:generate" />
+        <item itemvalue="npm.dev:prepare" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.dev:build" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +170,7 @@
       <workItem from="1720964414423" duration="28000" />
       <workItem from="1721204960214" duration="5567000" />
       <workItem from="1721455846283" duration="12974000" />
-      <workItem from="1721540852617" duration="11388000" />
+      <workItem from="1721540852617" duration="15101000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -215,7 +228,21 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۰۸" />
       <updated>1718804896302</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎−۰۰۰۰۹" summary="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme">
+      <option name="closed" value="true" />
+      <created>1721561785820</created>
+      <option name="number" value="LOCAL‎−۰۰۰۰۹" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۰۹" />
+      <updated>1721561785820</updated>
+    </task>
+    <task id="LOCAL‎−۰۰۰۱۰" summary="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme">
+      <option name="closed" value="true" />
+      <created>1721561819121</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۰" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۰" />
+      <updated>1721561819121</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +258,7 @@
     <MESSAGE value="- add Try Catch For IndexedDB functions" />
     <MESSAGE value="- get Table Names for IndexedDB in Config and Create in init" />
     <MESSAGE value="- remove debugger in development" />
-    <option name="LAST_COMMIT_MESSAGE" value="- remove debugger in development" />
+    <MESSAGE value="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
   </component>
 </project>

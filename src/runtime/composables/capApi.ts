@@ -4,16 +4,18 @@ import { ref } from 'vue'; // ref From Vue
 import CapModule from '#capModule'; // Import CapModule
 import axios from "axios"; // Import axios for making HTTP requests
 import { IndexDBGet,IndexDBClear } from "./indexedDB"; // Import function to get data from IndexedDB
+import {useCapAuth} from "./capAuth";
 //#endregion
 
 // Function to use Cap API
 export function useCapApi() {
   // Reactive references to store base URL and access token
-  const base_url = ref<null | string | unknown>(null);
-  const access_token = ref<null | string | unknown>(null);
-  const access_token_expireAt = ref<null | string | unknown>(null);
-  const refresh_token = ref<null | string | unknown>(null);
-  const refresh_token_expireAt = ref<null | string | unknown>(null);
+  const base_url = ref<any>(null);
+  const access_token = ref<any>(null);
+  const access_token_expireAt = ref<any>(null);
+  const refresh_token = ref<any>(null);
+  const refresh_token_expireAt = ref<any>(null);
+
   const { refreshToken } = useCapAuth()
 
   // Function to create and configure an axios instance
@@ -42,11 +44,9 @@ export function useCapApi() {
 
         // Check if refresh token is expired (if needed)
         if (accessTokenExpired && refresh_token.value) {
-          console.log('Expired')
           let refreshTokenExpired = isTokenExpired(refresh_token_expireAt.value);
           if (!refreshTokenExpired){
-            const newAccessToken = await refreshToken();
-            access_token.value = newAccessToken;
+            access_token.value = await refreshToken();
           }
         }
       }
@@ -74,8 +74,8 @@ export function useCapApi() {
 
     //#Add a response interceptor
     axiosInstance.interceptors.response.use(
-      response => response,
-      async error => {
+      (response:any) => response,
+      async (error:any) => {
         const originalRequest = error.config;
 
         // Handle User Authorization Error
@@ -111,7 +111,6 @@ export function useCapApi() {
     return axiosInstance;
     //#endregion
   };
-
   return {
     useAPI // Return the useAPI function
   };
