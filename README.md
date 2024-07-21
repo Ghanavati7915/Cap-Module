@@ -10,6 +10,7 @@ Manage Storage, Login and Register Users and API Caller in CAPModule package man
 * **IndexedDB :** Using Browser `IndexedDB` For Store FrontEnd Data .
 * **OAuth :** Using `OAuth2` Methods For Login / Register Users And Get Tokens.
 * **SSO :** Using `Single Sign On` Services From `CAPco`.
+* **RefreshToken :** Using `Refresh Token` to Renew Access Token Automatically.
 * **API With Credentials.** Axios Combine With SSO Login And Set Token Automatically.
 
 Last Testing With Nuxt Version : **3.11.2**
@@ -70,13 +71,17 @@ Finally, add **CapModule** Json Object Property to the Nuxt Config section of yo
 ```javascript
 export default defineNuxtConfig({
   CapModule: {
-    db_name:'',
     client_id:'',
     is_multi_token: true,
     environment: "Development",
+    database : {
+      db_name: "DataBaseName",
+      tables_name : ["config"]
+    },
     api_methods : {
       user_info: "",
-      authorization_by_app_code: ""
+      authorization_by_app_code: "",
+      refresh_token: ""
     },
     production : {
       base_url : "",
@@ -97,7 +102,7 @@ export default defineNuxtConfig({
   To use the services related to login, exit from the user account and check and receive the token, use the following methods:
 ```javascript
     <script setup lang="ts">
-        const { login , logout , checkLogin , userInfo } = useCapAuth();
+        const { login , logout , checkLogin , userInfo , refreshToken , getLoggedInUser } = useCapAuth();
     </script>
 ```
 - **login** 
@@ -126,6 +131,14 @@ await checkLogin(route.query.state , route.query.code)
   
 You can call this method to retrieve user information from the backend according to the received and active token.
 
+- **getLoggedInUser**
+
+You can call this method to get loggedInUser information from Local IndexedDB.
+
+- **refreshToken**
+
+You can call this method to renew AccessToken from the backend And Then Call UserInfo Method Automatically for Refresh User Info In local DB.
+
 -------------------------------
 
 ## UsageApi
@@ -139,6 +152,11 @@ To call different methods from the project's backend, you can use the completed 
         }
     </script>
 ```
+
+capAPI.useAPI( withAccessToken : boolean);
+- withAccessToken 
+  - `TRUE` :  if leave fill This Parameter, Set `True` by Default and Add AccessToken ( if User Logged in ) in the `Header` of Request .
+  - `FALSE` :  if set `False` call API without Credentials .
 
 -------------------------------
 
@@ -172,13 +190,17 @@ You can save the settings related to the project in a separate file outside Nuxt
 For this, create a file called **cap_module_config.json** in the **public** folder and enter the following values :
 ```javascript
 {
-  "db_name": "...",
   "client_id": "...",
   "is_multi_token": true,
   "environment": "Development",
+  "database": {
+    "db_name": "DatabaseName",
+      "tables_name" : ["config"]
+  },
   "api_methods" : {
     "user_info": "Auth/UserInfo",
-    "authorization_by_app_code": "Auth/AuthorizationByAppCode"
+    "authorization_by_app_code": "Auth/AuthorizationByAppCode",
+    "refresh_token": "Auth/RefreshToken"
   },
   "production" : {
     "base_url" : "https://b.abc.com",
@@ -197,10 +219,11 @@ The advantage of this work is that when the output from the project is prepared 
 ## Setting
 | **Key**                                 | **Type**   | **Default** | **Description**                                                                                                               |
 |-----------------------------------------|------------|-------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `db_name`                               | `string`   | empty       | The title of the database that will be created for the project in the browser                                                 |
 | `client_id`                             | `string`   | empty       | The key agreed between the IDM service and your project to start SSO authentication services                                  |
 | `is_multi_token`                        | `boolean`  | false       | Are there more than one tokens received from BackEnd? Default is false                                                        |
 | `environment`                           | `string`   | empty       | The current working environment of the programmer to use the parameters . Default is Development ( Production / Development ) |
+| `database.db_name`                             | `string`   | empty       | The title of the database that will be created for the project in the browser                                                 |
+| `database.tables_name`                             | `string[]` | empty       | The title of the database tables that will be created for the project in the database ( config is necessary )                |
 | `api_methods.user_info`                 | `string`   | empty       | The address related to the method of receiving user information who has logged in (in Production)                             |
 | `api_methods.authorization_by_app_code` | `string`   | empty       | The address related to the method of receiving the token from the HUB (in Production)                                         |
 | `production.base_url`                   | `string`   | empty       | The address related to the BackEnd of the project (in Production)                                                             |

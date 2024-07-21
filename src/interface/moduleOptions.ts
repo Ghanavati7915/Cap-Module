@@ -53,6 +53,11 @@ export default interface ModuleOptions {
      * Endpoint for authorization using an app code.
      */
     authorization_by_app_code: string;
+
+    /**
+     * Endpoint for refresh Token using an app code.
+     */
+    refresh_token: string;
   };
 
   //#endregion

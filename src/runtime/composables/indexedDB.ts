@@ -56,8 +56,9 @@ export const IndexDBInsert = async (tableName: string, field: string, value: any
         let trans = db.transaction([tableName], 'readwrite');
         let store = trans.objectStore(tableName);
         store.put(value, field);
+
         if (ExpireTime) {
-          const expire = new Date().setSeconds(ExpireTime);
+          const expire = new Date().setSeconds(new Date().getSeconds() + ExpireTime);
           store.put(expire, `${field}_expireAt`);
         }
         trans.oncomplete = () => {

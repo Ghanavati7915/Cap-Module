@@ -18,7 +18,8 @@ export default defineNuxtModule<ModuleOptions>({
     },
     api_methods: {
       user_info: '',
-      authorization_by_app_code: ''
+      authorization_by_app_code: '',
+      refresh_token: ''
     },
     production: {
       base_url: '',

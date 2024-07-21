@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- get Table Names for IndexedDB in Config and Create in init">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/runtime/composables/indexedDB.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/dist/runtime/composables/indexedDB.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/playground/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/public/cap_module_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface/moduleOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/moduleOptions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/config.client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/config.client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +147,17 @@
       <workItem from="1718696990985" duration="3056000" />
       <workItem from="1718700203496" duration="16518000" />
       <workItem from="1718791503417" duration="36000" />
-      <workItem from="1718804795290" duration="14000" />
+      <workItem from="1718804795290" duration="229000" />
+      <workItem from="1719239031190" duration="601000" />
+      <workItem from="1719648007465" duration="641000" />
+      <workItem from="1719653224150" duration="4985000" />
+      <workItem from="1719828448669" duration="695000" />
+      <workItem from="1720346651884" duration="617000" />
+      <workItem from="1720623172819" duration="1395000" />
+      <workItem from="1720964414423" duration="28000" />
+      <workItem from="1721204960214" duration="5567000" />
+      <workItem from="1721455846283" duration="12974000" />
+      <workItem from="1721540852617" duration="11388000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -190,7 +208,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۰۷" />
       <updated>1718718444393</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎−۰۰۰۰۸" summary="- remove debugger in development">
+      <option name="closed" value="true" />
+      <created>1718804896302</created>
+      <option name="number" value="LOCAL‎−۰۰۰۰۸" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۰۸" />
+      <updated>1718804896302</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +230,7 @@
     <MESSAGE value="- fix some issue" />
     <MESSAGE value="- add Try Catch For IndexedDB functions" />
     <MESSAGE value="- get Table Names for IndexedDB in Config and Create in init" />
-    <option name="LAST_COMMIT_MESSAGE" value="- get Table Names for IndexedDB in Config and Create in init" />
+    <MESSAGE value="- remove debugger in development" />
+    <option name="LAST_COMMIT_MESSAGE" value="- remove debugger in development" />
   </component>
 </project>

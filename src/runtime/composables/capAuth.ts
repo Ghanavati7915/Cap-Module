@@ -4,12 +4,14 @@ import { ref } from 'vue'; // ref From Vue
 // @ts-ignore
 import CapModule from '#capModule'; // Import CapModule for configuration details
 import { useCapApi } from './capApi'; // Import the Cap API utility
-import { IndexDBInsert, IndexDBGet, IndexDBRemove } from "./indexedDB"; // Import IndexedDB utilities
+import {IndexDBInsert, IndexDBGet, IndexDBRemove, IndexDBClear} from "./indexedDB"; // Import IndexedDB utilities
 //#endregion
 
 // Function to handle Cap Authentication
 export function useCapAuth() {
   //#region Variables
+  const tables = ref(CapModule.database.tables_name); // DataBase Tables Name from CapModule
+
   const client_id = ref(CapModule.client_id); // Client ID from CapModule
   const is_multi_token = ref(CapModule.is_multi_token); // Multi-token support flag from CapModule
   const redirect_uri_production = ref(CapModule.production.redirect_uri); // Redirect URI for production
@@ -47,13 +49,12 @@ export function useCapAuth() {
   const logout = async () => {
     try {
       // Remove tokens and user info from IndexedDB
-      await IndexDBRemove('config', 'Access-Token');
-      await IndexDBRemove('config', 'Access-Token_expireAt');
-      await IndexDBRemove('config', 'Refresh-Token');
-      await IndexDBRemove('config', 'Refresh-Token_expireAt');
-      await IndexDBRemove('config', 'UserInfo');
-      await IndexDBRemove('config', 'All-Tokens');
-      await IndexDBRemove('config', 'All-Tokens_expireAt');
+      tables.value.forEach(async (table : string) => {
+        await IndexDBClear(table);
+      })
+
+      window.location.href = `${environment.value === 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/logout`;
+
     } catch (e) {
       console.log('logOut Error:', e); // Log error if any
     }
@@ -73,12 +74,42 @@ export function useCapAuth() {
   };
   //#endregion
 
+  //#region Refresh Token
+  // Function to renew Token
+  const refreshToken = async () => {
+    try {
+      let capAPI = useCapApi(); // Get the Cap API instance
+      let currentAccessToken = await IndexDBGet('config' , 'Access-Token');
+      let currentRefreshToken = await IndexDBGet('config' , 'Refresh-Token');
+
+      const { data } = await (await capAPI.useAPI(false))({ method: 'post', url: CapModule.api_methods.refresh_token , data: {
+          accessToken: currentAccessToken,
+          refreshToken: currentRefreshToken,
+        } });
+      if (data) {
+        await IndexDBInsert('config', 'Access-Token', data.accessToken, data.accessTokenExpiresIn);
+        await IndexDBInsert('config', 'Refresh-Token', data.refreshToken, data.refreshTokenExpiresIn);
+
+        setTimeout(async () => {
+          await userInfo();
+        },1000);
+
+      return data.accessToken;
+      } else {
+        return { result: false, message: 'Refresh Token Error' };
+      }
+    } catch (e) {
+      return { result: false };
+    }
+  };
+  //#endregion
+
   //#region Authorization by App Code
   // Function to handle authorization using app code
   const authorizationByAppCode = async (code: string) => {
     try {
       let capAPI = useCapApi(); // Get the Cap API instance
-      const { data } = await (await capAPI.useAPI())({
+      const { data } = await (await capAPI.useAPI(false))({
         method: 'post',
         url: CapModule.api_methods.authorization_by_app_code,
         data: {
@@ -97,7 +128,8 @@ export function useCapAuth() {
 
           const profile = await userInfo();
           return profile.result ? { result: true } : { result: false, message: 'Profile Error' };
-        } else if (!is_multi_token.value) {
+        }
+        else if (!is_multi_token.value) {
           const token = data;
           await IndexDBInsert('config', 'Access-Token', token.accessToken, token.accessTokenExpiresIn);
           await IndexDBInsert('config', 'Refresh-Token', token.refreshToken, token.refreshTokenExpiresIn);
@@ -110,7 +142,7 @@ export function useCapAuth() {
       }
 
     } catch (e) {
-      console.log('e:', e);
+      console.error('CAP Module API Caller Error :', e);
       return { result: false, message: 'Login Error' };
     }
   };
@@ -135,19 +167,25 @@ export function useCapAuth() {
       await new Promise(r => setTimeout(r, 1000)); // Simulate delay
       let capAPI = useCapApi(); // Get the Cap API instance
       const { data } = await (await capAPI.useAPI())({ method: 'get', url: CapModule.api_methods.user_info });
-
       // Insert user info into IndexedDB
-      await IndexDBInsert('config', 'UserInfo', {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        userName: data.userame,
-        mobile: data.mobile,
-        permissions: data.permissions,
-      });
-
+      await IndexDBInsert('config', 'UserInfo', {...data});
       return { result: true };
     } catch (e) {
       return { result: false };
+    }
+  };
+  //#endregion
+
+  //#region UserLoggedIn
+  // Function to get user info
+  const getLoggedInUser = async () => {
+    try {
+      let user = await IndexDBGet('config', 'UserInfo')
+      if (user) return user;
+      else return null;
+    }
+    catch (e) {
+      return null ;
     }
   };
   //#endregion
@@ -157,5 +195,7 @@ export function useCapAuth() {
     logout,
     userInfo,
     checkLogin,
+    refreshToken,
+    getLoggedInUser,
   };
 }
