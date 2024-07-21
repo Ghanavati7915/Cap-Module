@@ -1,7 +1,7 @@
 {
   "name": "cap-module",
   "description": "The functions developed by Cap company to establish a connection with the server and also use the services of OAuth2 And IndexedDB",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ghanavati7915/Cap-Module.git"
@@ -49,7 +49,8 @@
     "dev:build": "nuxi build playground",
     "dev:generate": "nuxi generate playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "releaseWithTest": "npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "releaseWithLint": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",

@@ -1,0 +1,25 @@
+{
+  "client_id": "CapClub",
+  "is_multi_token": false,
+  "environment": "Development",
+  "database" : {
+    "db_name": "CapClub",
+    "tables_name" : ["config","fake","users"]
+  },
+  "api_methods" : {
+    "user_info": "Accounts/UserInfo",
+    "authorization_by_app_code": "Accounts/AuthorizationByAppCode",
+    "refresh_token": "Accounts/RefreshToken"
+  },
+  "production" : {
+    "base_url" : "https://b.gardeshium.ir/api",
+    "redirect_uri": "https://gardeshium.ir",
+    "sso_site_url": "https://betezadi.ir"
+  },
+  "development" : {
+    "base_url" : "https://b.gardeshium.ir/api",
+    "redirect_uri": "http://localhost:3000",
+    "sso_site_url": "https://betezadi.ir"
+  }
+}
+
