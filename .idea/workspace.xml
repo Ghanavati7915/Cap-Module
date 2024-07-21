@@ -64,7 +64,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.release">
+  <component name="RunManager" selected="npm.dev:prepare">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -117,10 +117,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev:prepare" />
         <item itemvalue="npm.release" />
         <item itemvalue="npm.prepack" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.dev:prepare" />
         <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
