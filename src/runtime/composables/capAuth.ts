@@ -46,18 +46,39 @@ export function useCapAuth() {
 
   //#region Logout
   // Function to handle logout process
-  const logout = async () => {
-    try {
-      // Remove tokens and user info from IndexedDB
-      tables.value.forEach(async (table : string) => {
-        await IndexDBClear(table);
-      })
+  const logout = async (removeAll:boolean = true) => {
+    if (removeAll) {
+      try {
+        // Remove tokens and user info from IndexedDB
+        tables.value.forEach(async (table : string) => {
+          await IndexDBClear(table);
+        })
 
-      window.location.href = `${environment.value === 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/logout`;
+        window.location.href = `${environment.value === 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/logout`;
 
-    } catch (e) {
-      console.log('logOut Error:', e); // Log error if any
+      }
+      catch (e) {
+        console.log('logOut Error:', e); // Log error if any
+      }
     }
+    else{
+      try {
+        await IndexDBRemove('config', 'Access-Token');
+        await IndexDBRemove('config', 'Access-Token_expireAt');
+        await IndexDBRemove('config', 'All-Tokens');
+        await IndexDBRemove('config', 'All-Tokens_expireAt');
+        await IndexDBRemove('config', 'Current-Token');
+        await IndexDBRemove('config', 'Current-Token_expireAt');
+        await IndexDBRemove('config', 'Refresh-Token');
+        await IndexDBRemove('config', 'Refresh-Token_expireAt');
+        await IndexDBRemove('config', 'UserInfo');
+        window.location.href = `${environment.value === 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/logout`;
+      }
+      catch (e) {
+        console.log('logOut Error:', e); // Log error if any
+      }
+    }
+
   };
   //#endregion
 

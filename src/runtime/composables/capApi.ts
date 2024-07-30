@@ -78,8 +78,11 @@ export function useCapApi() {
       async (error:any) => {
         const originalRequest = error.config;
 
+        let currentRefreshToken = await IndexDBGet('config' , 'Refresh-Token');
+
+
         // Handle User Authorization Error
-        if (error.response && (error.response.status === 401 || error.response.status === 403) && !originalRequest._retry) {
+        if (error.response && error.response.status === 401 && currentRefreshToken && !originalRequest._retry) {
           originalRequest._retry = true;
           try {
             const newAccessToken = await refreshToken();
@@ -93,7 +96,7 @@ export function useCapApi() {
         }
 
         // Handle User Refresh Token
-        else if (error.response && (error.response.status === 401 || error.response.status === 403) && originalRequest._retry) {
+        else if (error.response && error.response.status === 401 && !currentRefreshToken && originalRequest._retry) {
           try {
             // Handle token refresh failure
             logoutUser()
