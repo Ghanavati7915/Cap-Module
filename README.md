@@ -121,6 +121,14 @@ By calling this method, the user is transferred to the SSO page in the HUB accor
 
 By calling this method, all the information related to the logged in user will be removed from the database created in the browser, and after that the developer can issue the transfer command to the guest page.
 
+**Trick** : To delete all tables created in the database," await capAuth.logout(true) " should be called, and if you want only the table related to user login information and authentication to be deleted, " await capAuth.logout(false) " call:
+```javascript
+    <script setup lang="ts">
+        const { logout } = useCapAuth();
+        await capAuth.logout(true)   OR   await capAuth.logout(false)
+    </script>
+```
+
 - **checkLogin**
   
 The time to call this method is after the user returns from the SSO page and it requires sending the state and code parameters that are in the Query. The answer of this method is True or False, which will indicate the completion of the login process or an error in performing the operation. Send the information similar to the example below:
@@ -157,6 +165,9 @@ capAPI.useAPI( withAccessToken : boolean);
 - withAccessToken 
   - `TRUE` :  if leave fill This Parameter, Set `True` by Default and Add AccessToken ( if User Logged in ) in the `Header` of Request .
   - `FALSE` :  if set `False` call API without Credentials .
+
+
+**Trick** : Methods related to 403 and 401 error management, which announce the RefreshToken process and the user's lack of access to the desired method or page, have also been added. If a 403 error is given, the user will be directed to the error page, and if the user encounters a 401 error, a request to update the token will be given first, and if the error is still encountered, the user will be logged out.
 
 -------------------------------
 

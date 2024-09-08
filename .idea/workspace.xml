@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +163,14 @@
       <workItem from="1721737510799" duration="1089000" />
       <workItem from="1721813987558" duration="4295000" />
       <workItem from="1721821073812" duration="52000" />
-      <workItem from="1722324482807" duration="917000" />
+      <workItem from="1722324482807" duration="3083000" />
+      <workItem from="1722406193473" duration="675000" />
+      <workItem from="1722408097341" duration="664000" />
+      <workItem from="1724072286797" duration="1134000" />
+      <workItem from="1724487961711" duration="67000" />
+      <workItem from="1724829090541" duration="193000" />
+      <workItem from="1724829499864" duration="309000" />
+      <workItem from="1725785753746" duration="2871000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -242,7 +249,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۱" />
       <updated>1721568766164</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎−۰۰۰۱۲" summary="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler">
+      <option name="closed" value="true" />
+      <created>1722349185526</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۲" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۲" />
+      <updated>1722349185526</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +273,7 @@
     <MESSAGE value="- get Table Names for IndexedDB in Config and Create in init" />
     <MESSAGE value="- remove debugger in development" />
     <MESSAGE value="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
+    <MESSAGE value="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler" />
   </component>
 </project>

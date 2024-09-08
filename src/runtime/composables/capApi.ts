@@ -5,6 +5,8 @@ import CapModule from '#capModule'; // Import CapModule
 import axios from "axios"; // Import axios for making HTTP requests
 import { IndexDBGet,IndexDBClear } from "./indexedDB"; // Import function to get data from IndexedDB
 import {useCapAuth} from "./capAuth";
+// Assuming Vue Router is imported and available in the context
+import { useRouter } from 'vue-router'; // Import Vue Router
 //#endregion
 
 // Function to use Cap API
@@ -15,6 +17,8 @@ export function useCapApi() {
   const access_token_expireAt = ref<any>(null);
   const refresh_token = ref<any>(null);
   const refresh_token_expireAt = ref<any>(null);
+
+  const router = useRouter(); // Get the router instance
 
   const { refreshToken } = useCapAuth()
 
@@ -105,6 +109,12 @@ export function useCapApi() {
           catch (refreshError) {
             return Promise.reject(refreshError);
           }
+        }
+
+        // Handle User No Access Error
+        else if (error.response && error.response.status === 403) {
+          // Redirect to error page with 403 status code in query
+          router.push(`/error?statusCode=403`)
         }
 
         return Promise.reject(error);
