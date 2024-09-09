@@ -75,8 +75,23 @@ export function useCapApi() {
       });
       //#endregion
     }
+    //#endregion
 
-    //#Add a response interceptor
+    //#region Add a request interceptor
+    axiosInstance.interceptors.request.use((config: any) => {
+      if (config.data) {
+        // Convert Arabic/Farsi numbers in the data to English
+        for (const key in config.data) {
+          if (config.data.hasOwnProperty(key) && typeof config.data[key] === 'string') {
+            config.data[key] = convertNumbersToEnglish(config.data[key]);
+          }
+        }
+      }
+      return config;
+    });
+    //#endregion
+
+    //#region Add a response interceptor
     axiosInstance.interceptors.response.use(
       (response:any) => response,
       async (error:any) => {
@@ -142,11 +157,29 @@ const logoutUser = () => {
 }
 //#endregion
 
-
 //#region Function to check if token is expired
 const isTokenExpired = (expireAt:any) => {
   // Get current time in milliseconds
   const currentTime = new Date().getTime();
   return currentTime > expireAt;
 }
+//#endregion
+
+//#region Function to convert Arabic/Farsi numbers to English numbers
+const convertNumbersToEnglish = (input: string | number): string => {
+  const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+  const farsiNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+
+  let output = input.toString();
+
+  arabicNumbers.forEach((num, index) => {
+    output = output.replace(new RegExp(num, 'g'), index.toString());
+  });
+
+  farsiNumbers.forEach((num, index) => {
+    output = output.replace(new RegExp(num, 'g'), index.toString());
+  });
+
+  return output;
+};
 //#endregion

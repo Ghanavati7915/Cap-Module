@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +169,8 @@
       <workItem from="1724487961711" duration="67000" />
       <workItem from="1724829090541" duration="193000" />
       <workItem from="1724829499864" duration="309000" />
-      <workItem from="1725785753746" duration="2871000" />
+      <workItem from="1725785753746" duration="3310000" />
+      <workItem from="1725876448563" duration="1114000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -256,7 +256,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۲" />
       <updated>1722349185526</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL‎−۰۰۰۱۳" summary="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme">
+      <option name="closed" value="true" />
+      <created>1725790015222</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۳" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۳" />
+      <updated>1725790015222</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +281,7 @@
     <MESSAGE value="- remove debugger in development" />
     <MESSAGE value="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
     <MESSAGE value="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler" />
+    <MESSAGE value="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme" />
   </component>
 </project>
