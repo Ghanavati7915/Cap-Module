@@ -2,6 +2,18 @@
 Auth , API Caller , IndexedDB
 
 Developed By : [CAP Company](https://i-cap.ir) , Ahmad Ghanavati
+## v0.0.18
+
+[compare changes](https://undefined/undefined/compare/v0.0.17...v0.0.18)
+
+### 🚀 Enhancements
+
+- **api:** Convert Arabic and Farsi numbers to English before API requests ([f14220c](https://undefined/undefined/commit/f14220c))
+
+### ❤️ Contributors
+
+- Ahmad Ghanavati <Ahmad_ghanavati@yahoo.com>
+
 ## v0.0.17
 
 [compare changes](https://undefined/undefined/compare/v0.0.16...v0.0.17)
