@@ -191,6 +191,12 @@ To use each one, pay attention to the following examples. Also, you don't need t
         const clear = async () => {
             await IndexDBClear('{{ TableName }}')
         }
+        const getAllKeys = async () => {
+          await IndexDBGetAllKeys('{{ TableName }}')
+        }  
+        const getAllValues = async () => {
+          await IndexDBGetAll('{{ TableName }}')
+        }
     </script>
 ```
 

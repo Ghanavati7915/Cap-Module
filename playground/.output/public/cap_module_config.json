@@ -3,7 +3,7 @@
   "is_multi_token": false,
   "environment": "Development",
   "database" : {
-    "db_name": "CapClub",
+    "db_name": "CapModulePlayGround",
     "tables_name" : ["config","fake","users"]
   },
   "api_methods" : {

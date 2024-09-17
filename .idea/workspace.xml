@@ -4,9 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="feat(api): convert Arabic and Farsi numbers to English before API requests&#10;&#10;- Added `convertNumbersToEnglish` utility function to handle number conversion&#10;- Integrated number conversion into axios request interceptor to ensure that all Arabic and Farsi numbers in the request payload are converted to English before being sent to the server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/nitro.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/200.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/ClE640dA.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/DR9i232k.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/D_DrZYj5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/DzOtC3uz.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/latest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/_nuxt/builds/meta/36117112-8c43-45f9-9fb0-06fb272401a8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/.output/public/cap_module_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/cap_module_config_sample_avl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/cap_module_config_sample_club.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/.output/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/playground/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/public/cap_module_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config_sample_avl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config_sample_club.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +80,17 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.release">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev:build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -82,11 +111,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="dev:prepare" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="prepack" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev:prepare" />
+        <script value="prepack" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -102,23 +131,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev:build" />
+        <item itemvalue="npm.prepack" />
         <item itemvalue="npm.release" />
         <item itemvalue="npm.dev:generate" />
-        <item itemvalue="npm.dev:prepare" />
-        <item itemvalue="npm.test" />
-        <item itemvalue="npm.dev:build" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +189,11 @@
       <workItem from="1724829090541" duration="193000" />
       <workItem from="1724829499864" duration="309000" />
       <workItem from="1725785753746" duration="3310000" />
-      <workItem from="1725876448563" duration="1114000" />
+      <workItem from="1725876448563" duration="2282000" />
+      <workItem from="1725958660236" duration="600000" />
+      <workItem from="1726042701177" duration="607000" />
+      <workItem from="1726310091092" duration="388000" />
+      <workItem from="1726561194603" duration="1065000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -263,7 +286,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۳" />
       <updated>1725790015222</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL‎−۰۰۰۱۴" summary="feat(api): convert Arabic and Farsi numbers to English before API requests&#10;&#10;- Added `convertNumbersToEnglish` utility function to handle number conversion&#10;- Integrated number conversion into axios request interceptor to ensure that all Arabic and Farsi numbers in the request payload are converted to English before being sent to the server">
+      <option name="closed" value="true" />
+      <created>1725885779364</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۴" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۴" />
+      <updated>1725885779365</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +312,7 @@
     <MESSAGE value="- remove debugger in development&#10;- fix SigOut method&#10;- add RefreshToken API Handle&#10;- add getLoggedInUser Info Method&#10;- add avatar parameter to user info&#10;- add email parameter to user info&#10;- call User Info Method After Refresh Token&#10;- make RefreshToken Automatically&#10;- Logout User If Refresh API Broken&#10;- update Readme" />
     <MESSAGE value="- fix logout function Issue : add &quot;removeAll Option in Logout function for removeAll Tables Or Just Remove Authorization Fields in config&quot;&#10;- fix Access Token Renew Issue : remove 403 error Handler" />
     <MESSAGE value="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme" />
+    <MESSAGE value="feat(api): convert Arabic and Farsi numbers to English before API requests&#10;&#10;- Added `convertNumbersToEnglish` utility function to handle number conversion&#10;- Integrated number conversion into axios request interceptor to ensure that all Arabic and Farsi numbers in the request payload are converted to English before being sent to the server" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(api): convert Arabic and Farsi numbers to English before API requests&#10;&#10;- Added `convertNumbersToEnglish` utility function to handle number conversion&#10;- Integrated number conversion into axios request interceptor to ensure that all Arabic and Farsi numbers in the request payload are converted to English before being sent to the server" />
   </component>
 </project>

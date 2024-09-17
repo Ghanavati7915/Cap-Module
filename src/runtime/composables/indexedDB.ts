@@ -133,6 +133,67 @@ export const IndexDBGet = async (Table: string, field: string) => {
 };
 //#endregion
 
+//#region Get All Keys
+// Function to get All Keys In Table from IndexedDB
+export const IndexDBGetAllKeys = async (Table: string) => {
+  try {
+    let db = await IndexDB(); // Initialize DB
+    if (db) {
+      return new Promise((resolve) => {
+        let trans = db.transaction([Table], 'readonly'); // Start read-only transaction
+        let response: any = [];
+        trans.oncomplete = () => {
+          resolve(response); // Resolve with response on transaction complete
+        };
+        let store = trans.objectStore(Table); // Get object store
+        store.openCursor().onsuccess = (e: any) => {
+          let cursor: IDBCursorWithValue = (e.target as IDBRequest<IDBCursorWithValue>).result;
+          if (cursor) {
+            response.push(cursor.key); // Add Record Key To Response Array
+            cursor.continue(); // Continue cursor if key does not match
+          }
+        };
+      });
+    } else return null
+  } catch (e) {
+    console.error('cap-module ( IndexDBGet ) Error : ', e)
+    return null;
+  }
+};
+//#endregion
+
+//#region Get All Values
+// Function to get All Values In Table from IndexedDB
+export const IndexDBGetAll = async (Table: string) => {
+  try {
+    let db = await IndexDB(); // Initialize DB
+    if (db) {
+      return new Promise((resolve) => {
+        let trans = db.transaction([Table], 'readonly'); // Start read-only transaction
+        let response: any = [];
+        trans.oncomplete = () => {
+          resolve(response); // Resolve with response on transaction complete
+        };
+        let store = trans.objectStore(Table); // Get object store
+        store.openCursor().onsuccess = (e: any) => {
+          let cursor: IDBCursorWithValue = (e.target as IDBRequest<IDBCursorWithValue>).result;
+          if (cursor) {
+            response.push({
+              key : cursor.key,
+              value : cursor.value
+            }); // Add Record Key and Value To Response Array
+            cursor.continue(); // Continue cursor if key does not match
+          }
+        };
+      });
+    } else return null
+  } catch (e) {
+    console.error('cap-module ( IndexDBGet ) Error : ', e)
+    return null;
+  }
+};
+//#endregion
+
 //#region Clear Data
 // Function to clear data from IndexedDB
 export const IndexDBClear = async (Table: string) => {

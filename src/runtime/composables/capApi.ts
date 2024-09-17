@@ -67,7 +67,8 @@ export function useCapApi() {
         }
       });
       //#endregion
-    }else {
+    }
+    else {
       //#region Create Axios Instance
       axiosInstance = axios.create({
         baseURL: base_url.value,
@@ -135,9 +136,9 @@ export function useCapApi() {
         return Promise.reject(error);
       }
     );
+    //#endregion
 
     return axiosInstance;
-    //#endregion
   };
   return {
     useAPI // Return the useAPI function
