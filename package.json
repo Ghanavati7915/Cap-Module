@@ -1,7 +1,7 @@
 {
   "name": "cap-module",
   "description": "The functions developed by Cap company to establish a connection with the server and also use the services of OAuth2 And IndexedDB",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ghanavati7915/Cap-Module.git"
@@ -52,6 +52,7 @@
     "release": "npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "releaseWithTest": "npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "releaseWithLint": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "publish": "npm publish",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch",
