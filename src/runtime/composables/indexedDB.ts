@@ -5,7 +5,7 @@ import CapModule from '#capModule';
 
 //#region Variables
 let DB_NAME: string = CapModule.database.db_name; // Database name from CapModule
-let DB_VERSION: number = 1; // Version of the IndexedDB
+let DB_VERSION: number = CapModule.database.version ?? 1; // Version of the IndexedDB
 let DB: IDBDatabase | null; // Database instance
 //#endregion
 
@@ -15,6 +15,7 @@ export const IndexDB = (): Promise<IDBDatabase | null> => {
   try {
     return new Promise((resolve, reject) => {
       DB_NAME = CapModule.database.db_name;
+      DB_VERSION = CapModule.database.version;
       if (DB) resolve(DB);
       else {
         // Open IndexedDB

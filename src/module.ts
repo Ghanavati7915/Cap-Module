@@ -13,6 +13,7 @@ export default defineNuxtModule<ModuleOptions>({
     is_multi_token: false,
     environment: 'Development',
     database:{
+      version: 1,
       db_name: '',
       tables_name: [],
     },

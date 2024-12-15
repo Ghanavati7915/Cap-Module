@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     is_multi_token: true,
     environment: "Development",
     database:{
+      version:1,
       db_name:'',
       tables_name:[],
     },

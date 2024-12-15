@@ -3,8 +3,9 @@
   "is_multi_token": false,
   "environment": "Development",
   "database" : {
+    "version": 3,
     "db_name": "CapModulePlayGround",
-    "tables_name" : ["config","fake","users"]
+    "tables_name" : ["config","fake","users","test1","test2"]
   },
   "api_methods" : {
     "user_info": "Accounts/UserInfo",

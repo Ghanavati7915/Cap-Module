@@ -16,6 +16,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
     //#region Set CapModule Configuration
     // Set the CapModule properties based on the fetched configuration data
+    CapModule.database.version = configData.database.version;
     CapModule.database.db_name = configData.database.db_name;
     CapModule.database.tables_name = configData.database.tables_name;
     CapModule.client_id = configData.client_id;

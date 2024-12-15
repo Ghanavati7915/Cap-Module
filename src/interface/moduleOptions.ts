@@ -19,6 +19,10 @@ export default interface ModuleOptions {
   //#region Database and Client Configuration
   database:{
     /**
+     * Version of the database.
+     */
+    version: number;
+    /**
      * Name of the database.
      */
     db_name: string;
