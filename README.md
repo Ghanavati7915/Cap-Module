@@ -21,7 +21,7 @@ Last Testing With Nuxt Version : **3.11.2**
     <tr>
       <td align="center" valign="middle">
         <a href="https://bit.dev/?utm_source=pnpm&utm_medium=readme" target="_blank">
-<img src="https://betezadi.ir/_nuxt/img/logo.12e352e.png" width="150">
+<img src="https://betezadi.ir/_nuxt/img/logo.12e352e.png" width="150" height="80" alt="Cap Logo">
 </a>
       </td>
     </tr>
@@ -39,6 +39,7 @@ It was decided to prepare a complete package of all the company's requirements a
 -   [Usage Auth](#UsageAuth)
 -   [Usage Api](#UsageApi)
 -   [Usage DB](#UsageDB)
+-   [Usage Direct Extra Param](#UsageDirectExtraParam)
 -   [ExternalConfigFile](#ExternalConfigFile)
 -   [Setting](#Setting)
 
@@ -74,6 +75,7 @@ export default defineNuxtConfig({
     client_id:'',
     is_multi_token: true,
     environment: "Development",
+    extra: [ { refreshTime: 10 } , ... ],
     database : {
       version: 1,
       db_name: "DataBaseName",
@@ -203,6 +205,32 @@ To use each one, pay attention to the following examples. Also, you don't need t
 
 -------------------------------
 
+## UsageDirectExtraParam
+You can store additional project parameters in the form of an array. This allows you to define dynamic parameters that you want to change in the project without changing the version. For example, defining when to update an API on a page.
+To do this, follow these steps :
+
+In the configuration file, set the extra parameter as follows:
+```javascript
+{
+    "extra" : [ { "refreshTime": 10 }],
+}
+```
+Then use it in the scripting section of your project as follows :
+
+```javascript
+<script setup lang="ts">
+  import CapModule from '#capModule';
+  
+  onMounted(async () => {
+    console.log('CapModule.extra : ' , CapModule.extra)
+  })
+</script>
+```
+
+
+
+-------------------------------
+
 ## ExternalConfigFile
 You can save the settings related to the project in a separate file outside Nuxt.Config.ts file.
 For this, create a file called **cap_module_config.json** in the **public** folder and enter the following values :
@@ -210,7 +238,8 @@ For this, create a file called **cap_module_config.json** in the **public** fold
 {
   "client_id": "...",
   "is_multi_token": true,
-  "environment": "Development",
+  "environment": "Development", 
+  "extra": [ { "refreshTime" : 10 } ],
   "database": {
     "version": 1,
     "db_name": "DatabaseName", 
@@ -235,12 +264,14 @@ For this, create a file called **cap_module_config.json** in the **public** fold
 ```
 The advantage of this work is that when the output from the project is prepared and placed on the server, you can change the settings related to the connection to the BackEnd without the need to prepare a new output.
 
+
 ## Setting
 | **Key**                                 | **Type**   | **Default** | **Description**                                                                                                               |
 |-----------------------------------------|------------|-------------|-------------------------------------------------------------------------------------------------------------------------------|
 | `client_id`                             | `string`   | empty       | The key agreed between the IDM service and your project to start SSO authentication services                                  |
 | `is_multi_token`                        | `boolean`  | false       | Are there more than one tokens received from BackEnd? Default is false                                                        |
 | `environment`                           | `string`   | empty       | The current working environment of the programmer to use the parameters . Default is Development ( Production / Development ) |
+| `extra`                                 | `any[]`    | empty       | Fill This Field With Custom Data in Array Type And Use Anywhere in Your Project Directly.                                     |
 | `database.version`                      | `number`   | 1           | The version of the database that will be created for the project in the browser                                               |
 | `database.db_name`                      | `string`   | empty       | The title of the database that will be created for the project in the browser                                                 |
 | `database.tables_name`                  | `string[]` | empty       | The title of the database tables that will be created for the project in the database ( config is necessary )                 |

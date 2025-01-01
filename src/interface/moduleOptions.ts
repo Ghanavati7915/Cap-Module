@@ -4,17 +4,13 @@
  * Interface representing the options for the module configuration.
  */
 export default interface ModuleOptions {
-  //#region Client Configuration
-  /**
-   * Client ID for authentication purposes.
-   */
+  //#region Client ID for authentication purposes.
   client_id: string;
+  //#endregion
 
-  /**
-   * Flag to indicate if multiple tokens are supported.
-   */
+  //#region Flag to indicate if multiple tokens are supported.
   is_multi_token: boolean;
-
+  //#endregion
 
   //#region Database and Client Configuration
   database:{
@@ -112,6 +108,10 @@ export default interface ModuleOptions {
     sso_site_url: string;
   };
 
+  //#endregion
+
+  //#region Extra Configuration For Projects
+  extra:string[];
   //#endregion
 }
 

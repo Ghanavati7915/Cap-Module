@@ -2,6 +2,7 @@
   "client_id": "CapClub",
   "is_multi_token": false,
   "environment": "Development",
+  "extra": [{"refreshTime": 10}],
   "database" : {
     "version": 3,
     "db_name": "CapModulePlayGround",

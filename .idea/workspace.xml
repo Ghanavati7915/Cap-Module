@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Added the ability to get the list of keys registered in a specific table in indexedDB by calling the &quot;IndexDBGetAllKeys&quot; method and specifying the table title&#10;- Added the ability to get the list of all values recorded in a specific table as key and value in indexedDB by calling the &quot;IndexDBGetAll&quot; method and specifying the table title&#10;- update readme">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Added the ability to set the version of database for tables change count&#10;- update readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/playground/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/playground/app.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/public/cap_module_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface/moduleOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/moduleOptions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/config.client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/config.client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/basic/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/basic/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Ghanavati7915"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ghanavati7915/Cap-Module.git",
+    "accountId": "aabaa20a-90fc-40c2-aa24-466674a02ab8"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -40,34 +51,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:generate.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:prepare.executor&quot;: &quot;Run&quot;,
-    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.prepack.executor&quot;: &quot;Run&quot;,
-    &quot;npm.publish.executor&quot;: &quot;Run&quot;,
-    &quot;npm.release.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Project/CAP/Cap-Module/src/runtime/composables",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "npm.dev:build.executor": "Run",
+    "npm.dev:generate.executor": "Run",
+    "npm.dev:prepare.executor": "Run",
+    "npm.lint.executor": "Run",
+    "npm.prepack.executor": "Run",
+    "npm.publish.executor": "Run",
+    "npm.release.executor": "Run",
+    "npm.test.executor": "Run",
+    "ts.external.directory.path": "F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Project\CAP\Cap-Module\src\runtime\composables" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -123,11 +141,18 @@
       <list>
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.release" />
+        <item itemvalue="npm.prepack" />
         <item itemvalue="npm.publish" />
         <item itemvalue="npm.dev:build" />
-        <item itemvalue="npm.prepack" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -191,7 +216,8 @@
       <workItem from="1730717665557" duration="90000" />
       <workItem from="1730796442204" duration="218000" />
       <workItem from="1733129186410" duration="613000" />
-      <workItem from="1734245646396" duration="745000" />
+      <workItem from="1734245646396" duration="1257000" />
+      <workItem from="1735715800657" duration="2323000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -298,7 +324,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۵" />
       <updated>1726562426338</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎−۰۰۰۱۶" summary="- Added the ability to set the version of database for tables change count&#10;- update readme">
+      <option name="closed" value="true" />
+      <created>1734246576199</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۶" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۶" />
+      <updated>1734246576199</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +352,7 @@
     <MESSAGE value="- add Handle User No Access Error Condition In Axios Response ( Redirect User To Error Page)&#10;&#10;-update readme" />
     <MESSAGE value="feat(api): convert Arabic and Farsi numbers to English before API requests&#10;&#10;- Added `convertNumbersToEnglish` utility function to handle number conversion&#10;- Integrated number conversion into axios request interceptor to ensure that all Arabic and Farsi numbers in the request payload are converted to English before being sent to the server" />
     <MESSAGE value="- Added the ability to get the list of keys registered in a specific table in indexedDB by calling the &quot;IndexDBGetAllKeys&quot; method and specifying the table title&#10;- Added the ability to get the list of all values recorded in a specific table as key and value in indexedDB by calling the &quot;IndexDBGetAll&quot; method and specifying the table title&#10;- update readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added the ability to get the list of keys registered in a specific table in indexedDB by calling the &quot;IndexDBGetAllKeys&quot; method and specifying the table title&#10;- Added the ability to get the list of all values recorded in a specific table as key and value in indexedDB by calling the &quot;IndexDBGetAll&quot; method and specifying the table title&#10;- update readme" />
+    <MESSAGE value="- Added the ability to set the version of database for tables change count&#10;- update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added the ability to set the version of database for tables change count&#10;- update readme" />
   </component>
 </project>

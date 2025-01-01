@@ -22,6 +22,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     CapModule.client_id = configData.client_id;
     CapModule.is_multi_token = configData.is_multi_token;
     CapModule.environment = configData.environment;
+    CapModule.extra = configData.extra;
     CapModule.api_methods.user_info = configData.api_methods.user_info;
     CapModule.api_methods.refresh_token = configData.api_methods.refresh_token;
     CapModule.api_methods.authorization_by_app_code = configData.api_methods.authorization_by_app_code;

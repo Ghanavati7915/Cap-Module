@@ -23,12 +23,23 @@
 
 
 <script setup lang="ts">
+//#region Import
 const { login,logout,checkLogin,refreshToken,getLoggedInUser } = useCapAuth()
+import CapModule from '#capModule';
+//#endregion
+
+//#region Import
 const route = useRoute()
+//#endregion
+
+//#region Instance
 const res = ref<any>(null);
 const user = ref<any>(null);
-onMounted(async () => {
+//#endregion
 
+//#region Constructor
+onMounted(async () => {
+  console.log('CapModule.extra : ' , CapModule.extra)
   if (route.query && route.query.code) {
     let code = route.query.code;
     let state:any = null;
@@ -46,15 +57,15 @@ onMounted(async () => {
     getUserData();
   }
 })
+//#endregion
 
+//#region Functions
 const insertFakeData = async (table:string,key:string,value:string) => {
   await IndexDBInsert(table, key , value)
 }
-
 const getAllTableKeys = async (table:string) => {
   console.log('Fake Table All Keys : ' , await IndexDBGetAllKeys(table))
 }
-
 const getAllTableValues = async (table:string) => {
   console.log('Fake Table All Values : ' , await IndexDBGetAll(table))
 }
@@ -75,7 +86,6 @@ const testAPICaller = async () => {
     return {result: false, msg: 'ERROR'}
   }
 }
-
 const testAPIPromise = async () => {
   try {
     const capAPI = useCapApi()
@@ -101,15 +111,13 @@ const testAPIPromise = async () => {
     return {result: false, msg: 'ERROR'}
   }
 }
-
-
 const getUserData = async () => {
   user.value = await getLoggedInUser();
 }
-
 const log_out = async () => {
   await logout();
   await getUserData();
 }
+//#endregion
 
 </script>

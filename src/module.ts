@@ -17,6 +17,7 @@ export default defineNuxtModule<ModuleOptions>({
       db_name: '',
       tables_name: [],
     },
+    extra:[],
     api_methods: {
       user_info: '',
       authorization_by_app_code: '',
