@@ -1,69 +1,51 @@
-//#region Imports
-import { ref } from 'vue'; // ref From Vue
-// @ts-ignore
-import CapModule from '#capModule'; // Import CapModule
-import axios from "axios"; // Import axios for making HTTP requests
-import { IndexDBGet,IndexDBClear } from "./indexedDB"; // Import function to get data from IndexedDB
-import {useCapAuth} from "./capAuth";
-// Assuming Vue Router is imported and available in the context
-import { useRouter } from 'vue-router'; // Import Vue Router
-//#endregion
+import { ref } from 'vue';
+import CapModule from '#capModule';
+import axios from "axios";
+import { IndexDBGet, IndexDBClear } from "./indexedDB";
+import { useCapAuth } from "./capAuth";
+import { useRouter } from 'vue-router';
 
 // Function to use Cap API
 export function useCapApi() {
-  // Reactive references to store base URL and access token
   const base_url = ref<any>(null);
   const access_token = ref<any>(null);
   const access_token_expireAt = ref<any>(null);
   const refresh_token = ref<any>(null);
   const refresh_token_expireAt = ref<any>(null);
 
-  const router = useRouter(); // Get the router instance
+  const router = useRouter();
+  const { refreshToken } = useCapAuth();
 
-  const { refreshToken } = useCapAuth()
+  const useAPI = async (withAccessToken: boolean = true) => {
+    if (CapModule.environment === "Development")
+      base_url.value = CapModule.development.base_url;
+    else
+      base_url.value = CapModule.production.base_url;
 
-  // Function to create and configure an axios instance
-  const useAPI = async (withAccessToken : boolean = true) => {
-    //#region Set Base URL
-    // Set the base URL based on the environment
-    if (CapModule.environment === "Development")  base_url.value = CapModule.development.base_url;
-    else base_url.value = CapModule.production.base_url;
-    //#endregion
+    let axiosInstance: any = null;
 
-    //#region Create AXIOS API
-    let axiosInstance : any = null;
-    if (withAccessToken){
-      //#region Get Access Token
-      // Retrieve access & Refresh token from IndexedDB
+    if (withAccessToken) {
       access_token.value = await IndexDBGet('config', 'Access-Token');
       access_token_expireAt.value = await IndexDBGet('config', 'Access-Token_expireAt');
       refresh_token.value = await IndexDBGet('config', 'Refresh-Token');
       refresh_token_expireAt.value = await IndexDBGet('config', 'Refresh-Token_expireAt');
-      //#endregion
 
-      //#region Check AccessToken
-      // Check if access token is expired
       if (access_token.value) {
         let accessTokenExpired = isTokenExpired(access_token_expireAt.value);
 
-        // Check if refresh token is expired (if needed)
         if (accessTokenExpired && refresh_token.value) {
           let refreshTokenExpired = isTokenExpired(refresh_token_expireAt.value);
-          if (!refreshTokenExpired){
+          if (!refreshTokenExpired) {
             let _refreshToken = await refreshToken();
-            if (_refreshToken.result){
-              access_token.value = _refreshToken.accessToken
-            }else{
-              logoutUser()
+            if (_refreshToken.result) {
+              access_token.value = _refreshToken.accessToken;
+            } else {
+              logoutUser();
             }
           }
         }
       }
 
-      //#endregion
-
-      //#region Create Axios Instance
-      // Create and return an axios instance with the configured base URL and headers
       axiosInstance = axios.create({
         baseURL: base_url.value,
         withCredentials: true,
@@ -71,22 +53,16 @@ export function useCapApi() {
           Authorization: access_token.value ? `Bearer ${access_token.value}` : ''
         }
       });
-      //#endregion
-    }
-    else {
-      //#region Create Axios Instance
+    } else {
       axiosInstance = axios.create({
         baseURL: base_url.value,
         withCredentials: true,
       });
-      //#endregion
     }
-    //#endregion
 
     //#region Add a request interceptor
     axiosInstance.interceptors.request.use((config: any) => {
       if (config.data) {
-        // Convert Arabic/Farsi numbers in the data to English
         for (const key in config.data) {
           if (config.data.hasOwnProperty(key) && typeof config.data[key] === 'string') {
             config.data[key] = convertNumbersToEnglish(config.data[key]);
@@ -99,49 +75,47 @@ export function useCapApi() {
 
     //#region Add a response interceptor
     axiosInstance.interceptors.response.use(
-      (response:any) => response,
-      async (error:any) => {
+      (response: any) => response,
+      async (error: any) => {
         const originalRequest = error.config;
 
-        let currentRefreshToken = await IndexDBGet('config' , 'Refresh-Token');
+        // جلوگیری از تلاش بی‌پایان برای رفرش توکن
+        if (!originalRequest.retryCount) {
+          originalRequest.retryCount = 1;
+        } else if (originalRequest.retryCount >= 2) {
+          logoutUser();
+          return Promise.reject(error);
+        }
 
+        let currentRefreshToken = await IndexDBGet('config', 'Refresh-Token');
 
-        // Handle User Authorization Error
-        if (error.response && error.response.status === 401 && currentRefreshToken && !originalRequest._retry) {
-          originalRequest._retry = true;
+        if (error.response && error.response.status === 401 && currentRefreshToken && !originalRequest._isRetry) {
+          originalRequest._isRetry = true;
+          originalRequest.retryCount++;
+
           try {
             const newAccessToken = await refreshToken();
-            if (newAccessToken.result){
+            if (newAccessToken.result) {
               access_token.value = newAccessToken.accessToken;
-              originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+              originalRequest.headers['Authorization'] = `Bearer ${newAccessToken.accessToken}`;
               return axiosInstance(originalRequest);
-            }else{
-              logoutUser()
+            } else {
+              logoutUser();
               return Promise.reject();
             }
-
           } catch (refreshError) {
-            // Handle token refresh failure
+            logoutUser();
             return Promise.reject(refreshError);
           }
         }
 
-        // Handle User Refresh Token
-        else if (error.response && error.response.status === 401 && !currentRefreshToken && originalRequest._retry) {
-          try {
-            // Handle token refresh failure
-            logoutUser()
-            return Promise.reject();
-          }
-          catch (refreshError) {
-            return Promise.reject(refreshError);
-          }
+        if (error.response && error.response.status === 401 && !currentRefreshToken) {
+          logoutUser();
+          return Promise.reject(error);
         }
 
-        // Handle User No Access Error
-        else if (error.response && error.response.status === 403) {
-          // Redirect to error page with 403 status code in query
-          router.push(`/error?statusCode=403`)
+        if (error.response && error.response.status === 403) {
+          router.push(`/error?statusCode=403`);
         }
 
         return Promise.reject(error);
@@ -151,27 +125,24 @@ export function useCapApi() {
 
     return axiosInstance;
   };
-  return {
-    useAPI // Return the useAPI function
-  };
+
+  return { useAPI };
 }
 
 //#region Internal Logout Functions
 const logoutUser = () => {
-      const tables = CapModule.database.tables_name; // DataBase Tables Name from CapModule
-      const environment = CapModule.environment; // Current environment from CapModule
-      const sso_site_url_production = CapModule.production.sso_site_url; // SSO site URL for production
-      const sso_site_url_development = CapModule.development.sso_site_url; // SSO site URL for development
+  const tables = CapModule.database.tables_name;
+  const environment = CapModule.environment;
+  const sso_site_url_production = CapModule.production.sso_site_url;
+  const sso_site_url_development = CapModule.development.sso_site_url;
 
-      // Remove tokens and user info from IndexedDB
-      tables.forEach(async (table : string) => { await IndexDBClear(table); })
-      window.location.href = `${environment == 'Production' ? sso_site_url_production : sso_site_url_development}/logout`;
+  tables.forEach(async (table: string) => { await IndexDBClear(table); });
+  window.location.href = `${environment == 'Production' ? sso_site_url_production : sso_site_url_development}/logout`;
 }
 //#endregion
 
 //#region Function to check if token is expired
-const isTokenExpired = (expireAt:any) => {
-  // Get current time in milliseconds
+const isTokenExpired = (expireAt: any) => {
   const currentTime = new Date().getTime();
   return currentTime > expireAt;
 }

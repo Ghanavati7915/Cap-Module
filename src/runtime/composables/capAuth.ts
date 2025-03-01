@@ -120,6 +120,7 @@ export function useCapAuth() {
         return { result: false, message: 'Refresh Token Error' };
       }
     } catch (e) {
+      console.log('refreshToken Error : ' , e)
       return { result: false };
     }
   };

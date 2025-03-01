@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- The ability to define additional parameters dynamically for use in the program after it is generated without the need for a new version has been added.&#10;- update readme">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
@@ -218,7 +218,8 @@
       <workItem from="1736592010899" duration="468000" />
       <workItem from="1737375322679" duration="190000" />
       <workItem from="1740818532938" duration="808000" />
-      <workItem from="1740821655034" duration="981000" />
+      <workItem from="1740821655034" duration="1758000" />
+      <workItem from="1740828152083" duration="661000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -339,7 +340,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۷" />
       <updated>1735718219238</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL‎−۰۰۰۱۸" summary="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme">
+      <option name="closed" value="true" />
+      <created>1740822702042</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۸" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۸" />
+      <updated>1740822702042</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +370,7 @@
     <MESSAGE value="- Added the ability to get the list of keys registered in a specific table in indexedDB by calling the &quot;IndexDBGetAllKeys&quot; method and specifying the table title&#10;- Added the ability to get the list of all values recorded in a specific table as key and value in indexedDB by calling the &quot;IndexDBGetAll&quot; method and specifying the table title&#10;- update readme" />
     <MESSAGE value="- Added the ability to set the version of database for tables change count&#10;- update readme" />
     <MESSAGE value="- The ability to define additional parameters dynamically for use in the program after it is generated without the need for a new version has been added.&#10;- update readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="- The ability to define additional parameters dynamically for use in the program after it is generated without the need for a new version has been added.&#10;- update readme" />
+    <MESSAGE value="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme" />
   </component>
 </project>
