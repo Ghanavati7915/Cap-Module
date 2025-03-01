@@ -115,7 +115,7 @@ export function useCapAuth() {
           await userInfo();
         },1000);
 
-      return data.accessToken;
+        return { result: true, accessToken : data.accessToken };
       } else {
         return { result: false, message: 'Refresh Token Error' };
       }

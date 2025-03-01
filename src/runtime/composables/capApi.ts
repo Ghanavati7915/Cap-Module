@@ -50,7 +50,12 @@ export function useCapApi() {
         if (accessTokenExpired && refresh_token.value) {
           let refreshTokenExpired = isTokenExpired(refresh_token_expireAt.value);
           if (!refreshTokenExpired){
-            access_token.value = await refreshToken();
+            let _refreshToken = await refreshToken();
+            if (_refreshToken.result){
+              access_token.value = _refreshToken.accessToken
+            }else{
+              logoutUser()
+            }
           }
         }
       }
@@ -106,9 +111,15 @@ export function useCapApi() {
           originalRequest._retry = true;
           try {
             const newAccessToken = await refreshToken();
-            access_token.value = newAccessToken;
-            originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-            return axiosInstance(originalRequest);
+            if (newAccessToken.result){
+              access_token.value = newAccessToken.accessToken;
+              originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+              return axiosInstance(originalRequest);
+            }else{
+              logoutUser()
+              return Promise.reject();
+            }
+
           } catch (refreshError) {
             // Handle token refresh failure
             return Promise.reject(refreshError);
