@@ -62,13 +62,32 @@ export function useCapApi() {
 
     //#region Add a request interceptor
     axiosInstance.interceptors.request.use((config: any) => {
+      // تبدیل در body
       if (config.data) {
         for (const key in config.data) {
-          if (config.data.hasOwnProperty(key) && typeof config.data[key] === 'string') {
-            config.data[key] = convertNumbersToEnglish(config.data[key]);
+          if (config.data.hasOwnProperty(key)) {
+            const value = config.data[key];
+            if (typeof value === 'string' || typeof value === 'number') {
+              const converted = convertNumbersToEnglish(value.toString());
+              config.data[key] = typeof value === 'number' ? Number(converted) : converted;
+            }
           }
         }
       }
+
+      // تبدیل در query params
+      if (config.params) {
+        for (const key in config.params) {
+          if (config.params.hasOwnProperty(key)) {
+            const value = config.params[key];
+            if (typeof value === 'string' || typeof value === 'number') {
+              const converted = convertNumbersToEnglish(value.toString());
+              config.params[key] = typeof value === 'number' ? Number(converted) : converted;
+            }
+          }
+        }
+      }
+
       return config;
     });
     //#endregion

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Fixed a loop issue where the refreshToken was getting an 401 error.&#10;- update readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Project/CAP/Cap-Module/src/runtime/composables&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Project/Projects/Cap-Module&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -73,7 +72,7 @@
     &quot;npm.publish.executor&quot;: &quot;Run&quot;,
     &quot;npm.release.executor&quot;: &quot;Run&quot;,
     &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;F:\\Project\\CAP\\Cap-Module\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -219,7 +218,9 @@
       <workItem from="1737375322679" duration="190000" />
       <workItem from="1740818532938" duration="808000" />
       <workItem from="1740821655034" duration="1758000" />
-      <workItem from="1740828152083" duration="661000" />
+      <workItem from="1740828152083" duration="4422000" />
+      <workItem from="1745415530296" duration="567000" />
+      <workItem from="1751870988460" duration="516000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -347,7 +348,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۱۸" />
       <updated>1740822702042</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎−۰۰۰۱۹" summary="- Fixed a loop issue where the refreshToken was getting an 401 error.&#10;- update readme">
+      <option name="closed" value="true" />
+      <created>1740828837871</created>
+      <option name="number" value="LOCAL‎−۰۰۰۱۹" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۱۹" />
+      <updated>1740828837871</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,6 +379,7 @@
     <MESSAGE value="- Added the ability to set the version of database for tables change count&#10;- update readme" />
     <MESSAGE value="- The ability to define additional parameters dynamically for use in the program after it is generated without the need for a new version has been added.&#10;- update readme" />
     <MESSAGE value="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed a loop issue where the refreshToken was getting an error.&#10;- update readme" />
+    <MESSAGE value="- Fixed a loop issue where the refreshToken was getting an 401 error.&#10;- update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed a loop issue where the refreshToken was getting an 401 error.&#10;- update readme" />
   </component>
 </project>
