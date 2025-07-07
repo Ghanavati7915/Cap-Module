@@ -62,7 +62,12 @@ export function useCapApi() {
 
     //#region Add a request interceptor
     axiosInstance.interceptors.request.use((config: any) => {
-      // تبدیل در body
+      // ✅ تبدیل اعداد فارسی یا عربی در url کامل
+      if (config.url && typeof config.url === 'string') {
+        config.url = convertNumbersToEnglish(config.url);
+      }
+
+      // ✅ تبدیل در body
       if (config.data) {
         for (const key in config.data) {
           if (config.data.hasOwnProperty(key)) {
@@ -75,7 +80,7 @@ export function useCapApi() {
         }
       }
 
-      // تبدیل در query params
+      // ✅ تبدیل در query params
       if (config.params) {
         for (const key in config.params) {
           if (config.params.hasOwnProperty(key)) {
