@@ -2,6 +2,10 @@
 Auth , API Caller , IndexedDB
 
 Developed By : [CAP Company](https://i-cap.ir) , Ahmad Ghanavati
+## v0.0.27
+
+[compare changes](https://undefined/undefined/compare/v0.0.26...v0.0.27)
+
 ## v0.0.26
 
 [compare changes](https://undefined/undefined/compare/v0.0.25...v0.0.26)
