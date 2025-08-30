@@ -4,215 +4,220 @@ import CapModule from '#capModule';
 //#endregion
 
 //#region Variables
-let DB_NAME: string = CapModule.database.db_name; // Database name from CapModule
-let DB_VERSION: number = CapModule.database.version ?? 1; // Version of the IndexedDB
-let DB: IDBDatabase | null; // Database instance
+let DB_NAME: string = CapModule.database.db_name;
+let DB_VERSION: number = CapModule.database.version || 1;
+let DB: IDBDatabase | null = null;
+//#endregion
+
+//#region Helpers
+
+// تابع retry با backoff نمایی
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  retries = 5,
+  delay = 200
+): Promise<T> {
+  let attempt = 0;
+  while (attempt < retries) {
+    try {
+      return await fn();
+    } catch (err) {
+      attempt++;
+      if (attempt >= retries) throw err;
+      await new Promise(res => setTimeout(res, delay * Math.pow(2, attempt))); // backoff
+    }
+  }
+  throw new Error("عملیات بعد از چند بار تلاش ناموفق بود");
+}
+
+// بستن همه کانکشن‌های باز (پیشگیری از lock)
+async function closeConnectionsIfLocked() {
+  if (typeof (window as any).indexedDB?.databases === "function") {
+    const dbs = await (window as any).indexedDB.databases();
+    for (const db of dbs) {
+      if (db.name === DB_NAME) {
+        const openReq = indexedDB.open(DB_NAME);
+        openReq.onsuccess = () => {
+          openReq.result.close();
+        };
+      }
+    }
+  }
+}
+
 //#endregion
 
 //#region IndexedDB Initialization
-// Function to initialize and open the IndexedDB
-export const IndexDB = (): Promise<IDBDatabase | null> => {
-  try {
-    return new Promise((resolve, reject) => {
-      DB_NAME = CapModule.database.db_name;
-      DB_VERSION = CapModule.database.version;
-      if (DB) resolve(DB);
-      else {
-        // Open IndexedDB
-        let request = indexedDB.open(DB_NAME, DB_VERSION);
+export const IndexDB = async (): Promise<IDBDatabase> => {
+  return withRetry(async () => {
+    if (DB) return DB;
 
-        request.onerror = (e) => {
-          reject(e);
-        };
+    return new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open(DB_NAME, DB_VERSION);
 
-        request.onsuccess = (e: any) => {
-          DB = (e.target as IDBOpenDBRequest).result;
-          resolve(DB);
+      request.onerror = () => {
+        reject(new Error("خطا در باز کردن دیتابیس"));
+      };
+
+      request.onsuccess = () => {
+        DB = request.result;
+        DB.onclose = async () => {
+          DB = null;
+          await closeConnectionsIfLocked();
         };
-        request.onupgradeneeded = (e: any) => {
-          let db = (e.target as IDBOpenDBRequest).result;
-          CapModule.database.tables_name.forEach((table:string) => {
-            if (!db.objectStoreNames.contains(table)) {
-              db.createObjectStore(table);
-            }
-          })
-        };
-      }
+        resolve(DB);
+      };
+
+      request.onupgradeneeded = (e: any) => {
+        const db = e.target.result as IDBDatabase;
+        CapModule.database.tables_name.forEach((table: string) => {
+          if (!db.objectStoreNames.contains(table)) {
+            db.createObjectStore(table);
+          }
+        });
+      };
     });
-  } catch (e) {
-    console.error('cap-module ( IndexDB ) Error : ', e);
-    return Promise.resolve(null);
-  }
+  });
 };
-
 //#endregion
 
 //#region Insert Data
-// Function to insert data into IndexedDB
-export const IndexDBInsert = async (tableName: string, field: string, value: any, ExpireTime: any | null = null) => {
+export const IndexDBInsert = async (
+  tableName: string,
+  field: string,
+  value: any,
+  ExpireTime: number | null = null
+) => {
   try {
-    let db = await IndexDB(); // Ensure DB is initialized and version checked
-    if (db) {
+    await withRetry(async () => {
+      const db = await IndexDB();
       return new Promise<void>((resolve, reject) => {
-        let trans = db.transaction([tableName], 'readwrite');
-        let store = trans.objectStore(tableName);
+        const trans = db.transaction([tableName], "readwrite");
+        const store = trans.objectStore(tableName);
+
         store.put(value, field);
 
         if (ExpireTime) {
-          const expire = new Date().setSeconds(new Date().getSeconds() + ExpireTime);
-          store.put(expire, `${field}_expireAt`);
+          const expireAt = Date.now() + ExpireTime * 1000;
+          store.put(expireAt, `${field}_expireAt`);
         }
-        trans.oncomplete = () => {
-          resolve();
-        };
-        trans.onerror = () => {
-          reject('Transaction error');
-        };
+
+        trans.oncomplete = () => resolve();
+        trans.onerror = (e) => reject(e);
       });
-    } else {
-      return null;
-    }
+    });
+
+    return { state: true, message: "داده با موفقیت درج شد" };
   } catch (e) {
-    console.error('cap-module ( IndexDBInsert ) Error : ', e);
-    return null;
+    return { state: false, message: "خطا در درج داده" };
   }
 };
-
 //#endregion
 
 //#region Remove Data
-// Function to remove data from IndexedDB
 export const IndexDBRemove = async (Table: string, field: string) => {
   try {
-    let db = await IndexDB(); // Initialize DB
-    if (db) {
-      return new Promise<void>((resolve) => {
-        let trans = db.transaction([Table], 'readwrite'); // Start transaction
-        trans.oncomplete = () => {
-          resolve(); // Resolve on transaction complete
-        };
-        let store = trans.objectStore(Table); // Get object store
-        store.delete(field); // Delete field from store
+    await withRetry(async () => {
+      const db = await IndexDB();
+      return new Promise<void>((resolve, reject) => {
+        const trans = db.transaction([Table], "readwrite");
+        const store = trans.objectStore(Table);
+        store.delete(field);
+
+        trans.oncomplete = () => resolve();
+        trans.onerror = (e) => reject(e);
       });
-    } else return null
+    });
+
+    return { state: true, message: "داده با موفقیت حذف شد" };
   } catch (e) {
-    console.error('cap-module ( IndexDBRemove ) Error : ', e)
-    return null;
+    return { state: false, message: "خطا در حذف داده" };
   }
 };
 //#endregion
 
 //#region Get Data
-// Function to get data from IndexedDB
 export const IndexDBGet = async (Table: string, field: string) => {
   try {
-    let db = await IndexDB(); // Initialize DB
-    if (db) {
-      return new Promise((resolve) => {
-        let trans = db.transaction([Table], 'readonly'); // Start read-only transaction
-        let response: any = null;
-        trans.oncomplete = () => {
-          resolve(response); // Resolve with response on transaction complete
-        };
-        let store = trans.objectStore(Table); // Get object store
-        store.openCursor().onsuccess = (e: any) => {
-          let cursor: IDBCursorWithValue = (e.target as IDBRequest<IDBCursorWithValue>).result;
-          if (cursor) {
-            if (cursor.key === field) {
-              response = cursor.value; // Set response if cursor key matches field
-            } else {
-              cursor.continue(); // Continue cursor if key does not match
-            }
+    const db = await IndexDB();
+    return new Promise<any>((resolve, reject) => {
+      const trans = db.transaction([Table], "readonly");
+      const store = trans.objectStore(Table);
+      const req = store.get(field);
+
+      req.onsuccess = () => {
+        const expireReq = store.get(`${field}_expireAt`);
+        expireReq.onsuccess = () => {
+          const expireAt = expireReq.result;
+          if (expireAt && Date.now() > expireAt) {
+            resolve(null); // داده منقضی شده
+          } else {
+            resolve(req.result);
           }
         };
-      });
-    } else return null
+      };
+      req.onerror = (e) => reject(e);
+    });
   } catch (e) {
-    console.error('cap-module ( IndexDBGet ) Error : ', e)
     return null;
   }
 };
 //#endregion
 
 //#region Get All Keys
-// Function to get All Keys In Table from IndexedDB
 export const IndexDBGetAllKeys = async (Table: string) => {
   try {
-    let db = await IndexDB(); // Initialize DB
-    if (db) {
-      return new Promise((resolve) => {
-        let trans = db.transaction([Table], 'readonly'); // Start read-only transaction
-        let response: any = [];
-        trans.oncomplete = () => {
-          resolve(response); // Resolve with response on transaction complete
-        };
-        let store = trans.objectStore(Table); // Get object store
-        store.openCursor().onsuccess = (e: any) => {
-          let cursor: IDBCursorWithValue = (e.target as IDBRequest<IDBCursorWithValue>).result;
-          if (cursor) {
-            response.push(cursor.key); // Add Record Key To Response Array
-            cursor.continue(); // Continue cursor if key does not match
-          }
-        };
-      });
-    } else return null
-  } catch (e) {
-    console.error('cap-module ( IndexDBGet ) Error : ', e)
+    const db = await IndexDB();
+    return new Promise<any[]>((resolve, reject) => {
+      const trans = db.transaction([Table], "readonly");
+      const store = trans.objectStore(Table);
+      const req = store.getAllKeys();
+
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = (e) => reject(e);
+    });
+  } catch {
     return null;
   }
 };
 //#endregion
 
 //#region Get All Values
-// Function to get All Values In Table from IndexedDB
 export const IndexDBGetAll = async (Table: string) => {
   try {
-    let db = await IndexDB(); // Initialize DB
-    if (db) {
-      return new Promise((resolve) => {
-        let trans = db.transaction([Table], 'readonly'); // Start read-only transaction
-        let response: any = [];
-        trans.oncomplete = () => {
-          resolve(response); // Resolve with response on transaction complete
-        };
-        let store = trans.objectStore(Table); // Get object store
-        store.openCursor().onsuccess = (e: any) => {
-          let cursor: IDBCursorWithValue = (e.target as IDBRequest<IDBCursorWithValue>).result;
-          if (cursor) {
-            response.push({
-              key : cursor.key,
-              value : cursor.value
-            }); // Add Record Key and Value To Response Array
-            cursor.continue(); // Continue cursor if key does not match
-          }
-        };
-      });
-    } else return null
-  } catch (e) {
-    console.error('cap-module ( IndexDBGet ) Error : ', e)
+    const db = await IndexDB();
+    return new Promise<any[]>((resolve, reject) => {
+      const trans = db.transaction([Table], "readonly");
+      const store = trans.objectStore(Table);
+      const req = store.getAll();
+
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = (e) => reject(e);
+    });
+  } catch {
     return null;
   }
 };
 //#endregion
 
 //#region Clear Data
-// Function to clear data from IndexedDB
 export const IndexDBClear = async (Table: string) => {
   try {
-    let db = await IndexDB(); // Initialize DB
-    if (db) {
-      return new Promise<void>((resolve) => {
-        let trans = db.transaction([Table], 'readwrite'); // Start transaction
-        trans.oncomplete = () => {
-          resolve(); // Resolve on transaction complete
-        };
-        let store = trans.objectStore(Table); // Get object store
-        store.clear(); // Clear all data from store
+    await withRetry(async () => {
+      const db = await IndexDB();
+      return new Promise<void>((resolve, reject) => {
+        const trans = db.transaction([Table], "readwrite");
+        const store = trans.objectStore(Table);
+        store.clear();
+
+        trans.oncomplete = () => resolve();
+        trans.onerror = (e) => reject(e);
       });
-    } else return null
-  } catch (e) {
-    console.error('cap-module ( IndexDBClear ) Error : ', e)
-    return null;
+    });
+
+    return { state: true, message: "جدول با موفقیت پاک شد" };
+  } catch {
+    return { state: false, message: "خطا در پاک‌سازی جدول" };
   }
 };
 //#endregion
