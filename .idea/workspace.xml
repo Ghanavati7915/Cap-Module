@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Fix Convert String Persian Numbers in URL and Query To English Numbers">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
-    </list>
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Upgrade IndexDB For More Stability" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -222,7 +219,7 @@
       <workItem from="1745415530296" duration="567000" />
       <workItem from="1751870988460" duration="3221000" />
       <workItem from="1752313269431" duration="1212000" />
-      <workItem from="1756542601028" duration="2010000" />
+      <workItem from="1756542601028" duration="2308000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -371,7 +368,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۱" />
       <updated>1751875084247</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL‎−۰۰۰۲۲" summary="- Upgrade IndexDB For More Stability">
+      <option name="closed" value="true" />
+      <created>1756544997925</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۲" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۲" />
+      <updated>1756544997925</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,6 +402,7 @@
     <MESSAGE value="- Fixed a loop issue where the refreshToken was getting an 401 error.&#10;- update readme" />
     <MESSAGE value="- Fix Convert String Persian Number in Query Params To English Number" />
     <MESSAGE value="- Fix Convert String Persian Numbers in URL and Query To English Numbers" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fix Convert String Persian Numbers in URL and Query To English Numbers" />
+    <MESSAGE value="- Upgrade IndexDB For More Stability" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Upgrade IndexDB For More Stability" />
   </component>
 </project>

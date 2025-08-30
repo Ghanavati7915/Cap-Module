@@ -4,13 +4,15 @@
   "version": "0.0.30",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ghanavati7915/Cap-Module.git"
+    "url": "https://github.com/Ghanavati7915/Cap-Module.git"
   },
   "homepage": "https://github.com/Ghanavati7915",
   "bugs": "https://github.com/Ghanavati7915/Cap-Module/issues",
   "changelog": {
     "repo": {
-      "provider": "github"
+      "provider": "github",
+      "owner": "Ghanavati7915",
+      "name": "Cap-Module"
     }
   },
   "license": "MIT",
