@@ -189,16 +189,35 @@ export const IndexDBGetAll = async (Table: string) => {
     return new Promise<any[]>((resolve, reject) => {
       const trans = db.transaction([Table], "readonly");
       const store = trans.objectStore(Table);
-      const req = store.getAll();
 
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = (e) => reject(e);
+      // getAllKeys و getAll رو همزمان می‌گیریم
+      const keysReq = store.getAllKeys();
+      const valuesReq = store.getAll();
+
+      let response: any[] = [];
+
+      keysReq.onsuccess = () => {
+        const keys = keysReq.result;
+        valuesReq.onsuccess = () => {
+          const values = valuesReq.result;
+          // ترکیب key و value
+          for (let i = 0; i < keys.length; i++) {
+            response.push({ key: keys[i], value: values[i] });
+          }
+          resolve(response);
+        };
+        valuesReq.onerror = (e) => reject(e);
+      };
+
+      keysReq.onerror = (e) => reject(e);
     });
-  } catch {
+  } catch (e) {
+    console.error("cap-module (IndexDBGetAll) Error:", e);
     return null;
   }
 };
 //#endregion
+
 
 //#region Clear Data
 export const IndexDBClear = async (Table: string) => {

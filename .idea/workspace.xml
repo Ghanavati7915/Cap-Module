@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Upgrade IndexDB For More Stability">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +22,12 @@
     &quot;assignee&quot;: &quot;Ghanavati7915&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Ghanavati7915/Cap-Module.git",
-    "accountId": "fbcd7ce8-b889-4aff-a477-9c44fe53ea14"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Ghanavati7915/Cap-Module.git&quot;,
+    &quot;accountId&quot;: &quot;fbcd7ce8-b889-4aff-a477-9c44fe53ea14&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -221,7 +222,10 @@
       <workItem from="1745415530296" duration="567000" />
       <workItem from="1751870988460" duration="3221000" />
       <workItem from="1752313269431" duration="1212000" />
-      <workItem from="1756542601028" duration="2609000" />
+      <workItem from="1756542601028" duration="2863000" />
+      <workItem from="1756545673864" duration="43000" />
+      <workItem from="1756546939811" duration="527000" />
+      <workItem from="1756557823802" duration="718000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -384,7 +388,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۳" />
       <updated>1756545328447</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎−۰۰۰۲۴" summary="- Upgrade IndexDB For More Stability">
+      <option name="closed" value="true" />
+      <created>1756545486731</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۴" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۴" />
+      <updated>1756545486731</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
