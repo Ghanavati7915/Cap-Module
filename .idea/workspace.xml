@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Upgrade IndexDB For More Stability" />
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Upgrade IndexDB For More Stability">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,9 +134,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.release" />
+        <item itemvalue="npm.publish" />
         <item itemvalue="npm.prepack" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.publish" />
         <item itemvalue="npm.dev:build" />
       </list>
     </recent_temporary>
@@ -219,7 +221,7 @@
       <workItem from="1745415530296" duration="567000" />
       <workItem from="1751870988460" duration="3221000" />
       <workItem from="1752313269431" duration="1212000" />
-      <workItem from="1756542601028" duration="2308000" />
+      <workItem from="1756542601028" duration="2609000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -375,7 +377,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۲" />
       <updated>1756544997925</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL‎−۰۰۰۲۳" summary="- Upgrade IndexDB For More Stability">
+      <option name="closed" value="true" />
+      <created>1756545328447</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۳" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۳" />
+      <updated>1756545328447</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
