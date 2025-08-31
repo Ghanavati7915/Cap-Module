@@ -4,8 +4,6 @@ import CapModule from '#capModule';
 //#endregion
 
 //#region Variables
-let DB_NAME: string = CapModule.database.db_name;
-let DB_VERSION: number = CapModule.database.version || 1;
 let DB: IDBDatabase | null = null;
 //#endregion
 
@@ -35,8 +33,8 @@ async function closeConnectionsIfLocked() {
   if (typeof (window as any).indexedDB?.databases === "function") {
     const dbs = await (window as any).indexedDB.databases();
     for (const db of dbs) {
-      if (db.name === DB_NAME) {
-        const openReq = indexedDB.open(DB_NAME);
+      if (db.name === CapModule.database.db_name) {
+        const openReq = indexedDB.open(CapModule.database.db_name);
         openReq.onsuccess = () => {
           openReq.result.close();
         };
@@ -53,7 +51,7 @@ export const IndexDB = async (): Promise<IDBDatabase> => {
     if (DB) return DB;
 
     return new Promise<IDBDatabase>((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, DB_VERSION);
+      const request = indexedDB.open(CapModule.database.db_name, CapModule.database.version);
 
       request.onerror = () => {
         reject(new Error("خطا در باز کردن دیتابیس"));
@@ -217,7 +215,6 @@ export const IndexDBGetAll = async (Table: string) => {
   }
 };
 //#endregion
-
 
 //#region Clear Data
 export const IndexDBClear = async (Table: string) => {

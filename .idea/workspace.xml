@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Upgrade IndexDB For More Stability">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Fix Response Of IndexDBGetAll Function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/plugin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/plugin.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,44 +47,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Project/Projects/Cap-Module&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:generate.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev:prepare.executor&quot;: &quot;Run&quot;,
-    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.prepack.executor&quot;: &quot;Run&quot;,
-    &quot;npm.publish.executor&quot;: &quot;Run&quot;,
-    &quot;npm.release.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;F:\\Project\\Projects\\Cap-Module\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Project/Projects/Cap-Module",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev (۱).executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.dev:build.executor": "Run",
+    "npm.dev:generate.executor": "Run",
+    "npm.dev:prepare.executor": "Run",
+    "npm.lint.executor": "Run",
+    "npm.prepack.executor": "Run",
+    "npm.publish.executor": "Run",
+    "npm.release.executor": "Run",
+    "npm.test.executor": "Run",
+    "ts.external.directory.path": "F:\\Project\\Projects\\Cap-Module\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Project\CAP\Cap-Module\src\runtime\composables" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.release">
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
+  <component name="RunManager" selected="npm.dev (۱)">
+    <configuration name="dev (۱)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/playground/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
@@ -92,11 +94,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="dev:build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev:build" />
+        <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -134,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev (۱)" />
         <item itemvalue="npm.release" />
-        <item itemvalue="npm.publish" />
         <item itemvalue="npm.prepack" />
+        <item itemvalue="npm.publish" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.dev:build" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +227,8 @@
       <workItem from="1756542601028" duration="2863000" />
       <workItem from="1756545673864" duration="43000" />
       <workItem from="1756546939811" duration="527000" />
-      <workItem from="1756557823802" duration="718000" />
+      <workItem from="1756557823802" duration="1373000" />
+      <workItem from="1756618681571" duration="1958000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -395,7 +398,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۴" />
       <updated>1756545486731</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL‎−۰۰۰۲۵" summary="- Fix Response Of IndexDBGetAll Function">
+      <option name="closed" value="true" />
+      <created>1756558598932</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۵" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۵" />
+      <updated>1756558598932</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,6 +433,7 @@
     <MESSAGE value="- Fix Convert String Persian Number in Query Params To English Number" />
     <MESSAGE value="- Fix Convert String Persian Numbers in URL and Query To English Numbers" />
     <MESSAGE value="- Upgrade IndexDB For More Stability" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Upgrade IndexDB For More Stability" />
+    <MESSAGE value="- Fix Response Of IndexDBGetAll Function" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fix Response Of IndexDBGetAll Function" />
   </component>
 </project>

@@ -6,5 +6,5 @@ import CapModule from '#capModule'
 //#endregion
 
 export default defineNuxtPlugin(({ nuxtApp, $config }) => {
-  console.log('Plugin injected by CAP Module!')
+  console.log('Plugin injected by CAP Module! 🎉')
 })
