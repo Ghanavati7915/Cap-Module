@@ -1,7 +1,7 @@
 {
   "name": "cap-module",
   "description": "The functions developed by Cap company to establish a connection with the server and also use the services of OAuth2 And IndexedDB",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "repository": {
     "type": "git",
     "url": "https://github.com/Ghanavati7915/Cap-Module.git"
@@ -62,8 +62,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
-    "axios": "^1.7.2",
-    "qs": "^6.14.0"
+    "axios": "^1.7.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.2.0",
