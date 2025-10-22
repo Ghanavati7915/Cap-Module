@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import CapModule from '#capModule';
 import axios from "axios";
-import qs from 'qs';
+import * as qs from 'qs';
 import { IndexDBGet, IndexDBClear } from "./indexedDB";
 import { useCapAuth } from "./capAuth";
 import { useRouter } from 'vue-router';

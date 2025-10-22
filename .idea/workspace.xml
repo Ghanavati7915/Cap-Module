@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="update">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,39 +47,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Project/Projects/Cap-Module",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.dev (۱).executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.dev:build.executor": "Run",
-    "npm.dev:generate.executor": "Run",
-    "npm.dev:prepare.executor": "Run",
-    "npm.lint.executor": "Run",
-    "npm.prepack.executor": "Run",
-    "npm.publish.executor": "Run",
-    "npm.release.executor": "Run",
-    "npm.test.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.general",
-    "ts.external.directory.path": "F:\\Project\\Projects\\Cap-Module\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Project/Projects/Cap-Module&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.dev (۱).executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev:generate.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev:prepare.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;npm.prepack.executor&quot;: &quot;Run&quot;,
+    &quot;npm.publish.executor&quot;: &quot;Run&quot;,
+    &quot;npm.release.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;F:\\Project\\Projects\\Cap-Module\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Project\CAP\Cap-Module\src\runtime\composables" />
@@ -245,7 +244,8 @@
       <workItem from="1759047660240" duration="47000" />
       <workItem from="1760943401343" duration="2561000" />
       <workItem from="1760955001308" duration="8000" />
-      <workItem from="1761120537830" duration="2219000" />
+      <workItem from="1761120537830" duration="2543000" />
+      <workItem from="1761125909979" duration="1937000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -429,7 +429,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۶" />
       <updated>1756622781710</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎−۰۰۰۲۷" summary="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality">
+      <option name="closed" value="true" />
+      <created>1761124872483</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۷" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۷" />
+      <updated>1761124872483</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,6 +466,7 @@
     <MESSAGE value="- Upgrade IndexDB For More Stability" />
     <MESSAGE value="- Fix Response Of IndexDBGetAll Function" />
     <MESSAGE value="- disable Product Environment CaseSensitive&#10;- fix indexedDB Initialization Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="- disable Product Environment CaseSensitive&#10;- fix indexedDB Initialization Bug" />
+    <MESSAGE value="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality" />
   </component>
 </project>
