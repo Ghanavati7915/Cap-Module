@@ -1,6 +1,7 @@
 import { ref } from 'vue';
 import CapModule from '#capModule';
 import axios from "axios";
+import qs from 'qs';
 import { IndexDBGet, IndexDBClear } from "./indexedDB";
 import { useCapAuth } from "./capAuth";
 import { useRouter } from 'vue-router';
@@ -62,36 +63,69 @@ export function useCapApi() {
 
     //#region Add a request interceptor
     axiosInstance.interceptors.request.use((config: any) => {
-      // ✅ تبدیل اعداد فارسی یا عربی در url کامل
+      //#region 🔹 تبدیل اعداد در URL
       if (config.url && typeof config.url === 'string') {
         config.url = convertNumbersToEnglish(config.url);
       }
+      //#endregion
 
-      // ✅ تبدیل در body
-      if (config.data) {
-        for (const key in config.data) {
-          if (config.data.hasOwnProperty(key)) {
-            const value = config.data[key];
-            if (typeof value === 'string' || typeof value === 'number') {
-              const converted = convertNumbersToEnglish(value.toString());
-              config.data[key] = typeof value === 'number' ? Number(converted) : converted;
-            }
-          }
-        }
-      }
-
-      // ✅ تبدیل در query params
-      if (config.params) {
+      //#region 🔹 تبدیل اعداد در Query Params
+      if (config.params && typeof config.params === 'object') {
         for (const key in config.params) {
-          if (config.params.hasOwnProperty(key)) {
+          if (Object.prototype.hasOwnProperty.call(config.params, key)) {
             const value = config.params[key];
             if (typeof value === 'string' || typeof value === 'number') {
               const converted = convertNumbersToEnglish(value.toString());
-              config.params[key] = typeof value === 'number' ? Number(converted) : converted;
+              config.params[key] =
+                typeof value === 'number' ? Number(converted) : converted;
             }
           }
         }
       }
+      //#endregion
+
+      //#region 🔹 تبدیل اعداد در Body (data)
+      if (config.data) {
+        // ✅ اگر از نوع FormData است، نباید دستکاری شود
+        if (typeof FormData !== 'undefined' && config.data instanceof FormData) {
+          // فقط رشته‌های ساده (مثل text field) را در FormData تبدیل می‌کنیم، فایل‌ها دست‌نخورده می‌مانند
+          const newFormData = new FormData();
+          for (const [key, value] of config.data.entries()) {
+            if (typeof value === 'string') {
+              newFormData.append(key, convertNumbersToEnglish(value));
+            } else {
+              newFormData.append(key, value); // فایل یا Blob
+            }
+          }
+          config.data = newFormData;
+        }
+
+        // ✅ اگر از نوع Object معمولی است
+        else if (typeof config.data === 'object') {
+          for (const key in config.data) {
+            if (Object.prototype.hasOwnProperty.call(config.data, key)) {
+              const value = config.data[key];
+              if (typeof value === 'string' || typeof value === 'number') {
+                const converted = convertNumbersToEnglish(value.toString());
+                config.data[key] =
+                  typeof value === 'number' ? Number(converted) : converted;
+              }
+            }
+          }
+
+          // ✅ اگر نوع Content-Type فرم باشد، تبدیل به qs
+          const contentType =
+            config.headers?.['Content-Type'] ||
+            config.headers?.common?.['Content-Type'];
+          if (
+            contentType &&
+            contentType.includes('application/x-www-form-urlencoded')
+          ) {
+            config.data = qs.stringify(config.data);
+          }
+        }
+      }
+      //#endregion
 
       return config;
     });
@@ -173,20 +207,15 @@ const isTokenExpired = (expireAt: any) => {
 //#endregion
 
 //#region Function to convert Arabic/Farsi numbers to English numbers
-const convertNumbersToEnglish = (input: string | number): string => {
-  const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-  const farsiNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+const convertNumbersToEnglish = (input: string | number | null | undefined): string => {
+  if (input === null || input === undefined) return '';
 
-  let output = input.toString();
-
-  arabicNumbers.forEach((num, index) => {
-    output = output.replace(new RegExp(num, 'g'), index.toString());
-  });
-
-  farsiNumbers.forEach((num, index) => {
-    output = output.replace(new RegExp(num, 'g'), index.toString());
-  });
-
-  return output;
+  return input
+    .toString()
+    // اعداد فارسی
+    .replace(/[۰-۹]/g, (d) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+    // اعداد عربی
+    .replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
 };
 //#endregion
+

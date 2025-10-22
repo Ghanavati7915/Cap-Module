@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- Fix Response Of IndexDBGetAll Function">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/plugin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/plugin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -74,6 +76,7 @@
     "npm.publish.executor": "Run",
     "npm.release.executor": "Run",
     "npm.test.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.general",
     "ts.external.directory.path": "F:\\Project\\Projects\\Cap-Module\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -83,7 +86,7 @@
       <recent name="F:\Project\CAP\Cap-Module\src\runtime\composables" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev (۱)">
+  <component name="RunManager" selected="npm.release">
     <configuration name="dev (۱)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/playground/package.json" />
       <command value="run" />
@@ -136,8 +139,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev (۱)" />
         <item itemvalue="npm.release" />
+        <item itemvalue="npm.dev (۱)" />
         <item itemvalue="npm.prepack" />
         <item itemvalue="npm.publish" />
         <item itemvalue="npm.dev" />
@@ -228,7 +231,21 @@
       <workItem from="1756545673864" duration="43000" />
       <workItem from="1756546939811" duration="527000" />
       <workItem from="1756557823802" duration="1373000" />
-      <workItem from="1756618681571" duration="1958000" />
+      <workItem from="1756618681571" duration="2395000" />
+      <workItem from="1756623155584" duration="23000" />
+      <workItem from="1756623195998" duration="11000" />
+      <workItem from="1758630873210" duration="1459000" />
+      <workItem from="1758632641431" duration="2234000" />
+      <workItem from="1758718098511" duration="743000" />
+      <workItem from="1758719947251" duration="755000" />
+      <workItem from="1758954406224" duration="598000" />
+      <workItem from="1758957214910" duration="19000" />
+      <workItem from="1758957636786" duration="1241000" />
+      <workItem from="1758983800973" duration="2265000" />
+      <workItem from="1759047660240" duration="47000" />
+      <workItem from="1760943401343" duration="2561000" />
+      <workItem from="1760955001308" duration="8000" />
+      <workItem from="1761120537830" duration="2219000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -405,7 +422,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۵" />
       <updated>1756558598932</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL‎−۰۰۰۲۶" summary="- disable Product Environment CaseSensitive&#10;- fix indexedDB Initialization Bug">
+      <option name="closed" value="true" />
+      <created>1756622781710</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۶" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۶" />
+      <updated>1756622781710</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,6 +458,7 @@
     <MESSAGE value="- Fix Convert String Persian Numbers in URL and Query To English Numbers" />
     <MESSAGE value="- Upgrade IndexDB For More Stability" />
     <MESSAGE value="- Fix Response Of IndexDBGetAll Function" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fix Response Of IndexDBGetAll Function" />
+    <MESSAGE value="- disable Product Environment CaseSensitive&#10;- fix indexedDB Initialization Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="- disable Product Environment CaseSensitive&#10;- fix indexedDB Initialization Bug" />
   </component>
 </project>
