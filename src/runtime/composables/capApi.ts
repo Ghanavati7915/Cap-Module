@@ -1,12 +1,11 @@
 import { ref } from 'vue';
 import CapModule from '#capModule';
 import axios from "axios";
-import * as qs from 'qs';
 import { IndexDBGet, IndexDBClear } from "./indexedDB";
 import { useCapAuth } from "./capAuth";
 import { useRouter } from 'vue-router';
 
-// Function to use Cap API
+//#region Function to use Cap API
 export function useCapApi() {
   const base_url = ref<any>(null);
   const access_token = ref<any>(null);
@@ -18,13 +17,16 @@ export function useCapApi() {
   const { refreshToken } = useCapAuth();
 
   const useAPI = async (withAccessToken: boolean = true) => {
-    if (CapModule.environment === "Development")
-      base_url.value = CapModule.development.base_url;
-    else
-      base_url.value = CapModule.production.base_url;
+    //#region 🔹 تعیین base URL
+    base_url.value =
+      CapModule.environment === "Development"
+        ? CapModule.development.base_url
+        : CapModule.production.base_url;
+    //#endregion
 
     let axiosInstance: any = null;
 
+    //#region 🔹 ایجاد instance بر اساس نوع احراز هویت
     if (withAccessToken) {
       access_token.value = await IndexDBGet('config', 'Access-Token');
       access_token_expireAt.value = await IndexDBGet('config', 'Access-Token_expireAt');
@@ -32,17 +34,14 @@ export function useCapApi() {
       refresh_token_expireAt.value = await IndexDBGet('config', 'Refresh-Token_expireAt');
 
       if (access_token.value) {
-        let accessTokenExpired = isTokenExpired(access_token_expireAt.value);
-
+        const accessTokenExpired = isTokenExpired(access_token_expireAt.value);
         if (accessTokenExpired && refresh_token.value) {
-          let refreshTokenExpired = isTokenExpired(refresh_token_expireAt.value);
+          const refreshTokenExpired = isTokenExpired(refresh_token_expireAt.value);
           if (!refreshTokenExpired) {
-            let _refreshToken = await refreshToken();
+            const _refreshToken = await refreshToken();
             if (_refreshToken.result) {
               access_token.value = _refreshToken.accessToken;
-            } else {
-              logoutUser();
-            }
+            } else logoutUser();
           }
         }
       }
@@ -60,9 +59,11 @@ export function useCapApi() {
         withCredentials: true,
       });
     }
+    //#endregion
 
-    //#region Add a request interceptor
+    //#region 🧩 Request Interceptor
     axiosInstance.interceptors.request.use((config: any) => {
+
       //#region 🔹 تبدیل اعداد در URL
       if (config.url && typeof config.url === 'string') {
         config.url = convertNumbersToEnglish(config.url);
@@ -86,21 +87,25 @@ export function useCapApi() {
 
       //#region 🔹 تبدیل اعداد در Body (data)
       if (config.data) {
-        // ✅ اگر از نوع FormData است، نباید دستکاری شود
+        const contentType =
+          config.headers?.['Content-Type'] ||
+          config.headers?.common?.['Content-Type'] ||
+          '';
+
+        // ✅ اگر از نوع FormData باشد
         if (typeof FormData !== 'undefined' && config.data instanceof FormData) {
-          // فقط رشته‌های ساده (مثل text field) را در FormData تبدیل می‌کنیم، فایل‌ها دست‌نخورده می‌مانند
           const newFormData = new FormData();
           for (const [key, value] of config.data.entries()) {
             if (typeof value === 'string') {
               newFormData.append(key, convertNumbersToEnglish(value));
             } else {
-              newFormData.append(key, value); // فایل یا Blob
+              newFormData.append(key, value); // فایل‌ها دست‌نخورده
             }
           }
           config.data = newFormData;
         }
 
-        // ✅ اگر از نوع Object معمولی است
+        // ✅ اگر JSON Body یا Object معمولی باشد
         else if (typeof config.data === 'object') {
           for (const key in config.data) {
             if (Object.prototype.hasOwnProperty.call(config.data, key)) {
@@ -113,15 +118,17 @@ export function useCapApi() {
             }
           }
 
-          // ✅ اگر نوع Content-Type فرم باشد، تبدیل به qs
-          const contentType =
-            config.headers?.['Content-Type'] ||
-            config.headers?.common?.['Content-Type'];
-          if (
-            contentType &&
-            contentType.includes('application/x-www-form-urlencoded')
-          ) {
-            config.data = qs.stringify(config.data);
+          // ✅ اگر فرم-urlencoded باشد
+          if (contentType.includes('application/x-www-form-urlencoded')) {
+            const formBody = Object.keys(config.data)
+              .map(
+                key =>
+                  encodeURIComponent(key) +
+                  '=' +
+                  encodeURIComponent(config.data[key])
+              )
+              .join('&');
+            config.data = formBody;
           }
         }
       }
@@ -131,23 +138,27 @@ export function useCapApi() {
     });
     //#endregion
 
-    //#region Add a response interceptor
+    //#region 🧩 Response Interceptor
     axiosInstance.interceptors.response.use(
       (response: any) => response,
       async (error: any) => {
         const originalRequest = error.config;
 
-        // جلوگیری از تلاش بی‌پایان برای رفرش توکن
-        if (!originalRequest.retryCount) {
-          originalRequest.retryCount = 1;
-        } else if (originalRequest.retryCount >= 2) {
+        // جلوگیری از تلاش بی‌پایان
+        if (!originalRequest.retryCount) originalRequest.retryCount = 1;
+        else if (originalRequest.retryCount >= 2) {
           logoutUser();
           return Promise.reject(error);
         }
 
-        let currentRefreshToken = await IndexDBGet('config', 'Refresh-Token');
+        const currentRefreshToken = await IndexDBGet('config', 'Refresh-Token');
 
-        if (error.response && error.response.status === 401 && currentRefreshToken && !originalRequest._isRetry) {
+        if (
+          error.response &&
+          error.response.status === 401 &&
+          currentRefreshToken &&
+          !originalRequest._isRetry
+        ) {
           originalRequest._isRetry = true;
           originalRequest.retryCount++;
 
@@ -186,8 +197,9 @@ export function useCapApi() {
 
   return { useAPI };
 }
+//#endregion
 
-//#region Internal Logout Functions
+//#region 🔒 Internal Logout Function
 const logoutUser = () => {
   const tables = CapModule.database.tables_name;
   const environment = CapModule.environment;
@@ -195,27 +207,29 @@ const logoutUser = () => {
   const sso_site_url_development = CapModule.development.sso_site_url;
 
   tables.forEach(async (table: string) => { await IndexDBClear(table); });
-  window.location.href = `${environment == 'Production' ? sso_site_url_production : sso_site_url_development}/logout`;
-}
+  window.location.href = `${environment == 'Production'
+    ? sso_site_url_production
+    : sso_site_url_development
+  }/logout`;
+};
 //#endregion
 
-//#region Function to check if token is expired
+//#region ⏱️ Token Expiration Checker
 const isTokenExpired = (expireAt: any) => {
   const currentTime = new Date().getTime();
   return currentTime > expireAt;
-}
+};
 //#endregion
 
-//#region Function to convert Arabic/Farsi numbers to English numbers
+//#region 🔢 Convert Arabic/Farsi numbers to English
 const convertNumbersToEnglish = (input: string | number | null | undefined): string => {
   if (input === null || input === undefined) return '';
 
   return input
     .toString()
     // اعداد فارسی
-    .replace(/[۰-۹]/g, (d) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+    .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
     // اعداد عربی
-    .replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
+    .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
 };
 //#endregion
-
