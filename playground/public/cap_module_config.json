@@ -1,5 +1,6 @@
 {
   "client_id": "CapClub",
+  "app_code": "1234",
   "is_multi_token": false,
   "environment": "Development",
   "extra": [{"refreshTime": 10}],
@@ -16,12 +17,12 @@
   "production" : {
     "base_url" : "https://b.gardeshium.ir/api",
     "redirect_uri": "https://gardeshium.ir",
-    "sso_site_url": "https://betezadi.ir"
+    "sso_site_url": "https://sso.i-cap.ir"
   },
   "development" : {
     "base_url" : "https://b.gardeshium.ir/api",
     "redirect_uri": "http://localhost:3000",
-    "sso_site_url": "https://betezadi.ir"
+    "sso_site_url": "https://sso.i-cap.ir"
   }
 }
 

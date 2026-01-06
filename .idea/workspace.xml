@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="اضافه شدن پارامتر app_code در cap_module_config به جهت تفکیک برنامه هایی که از بکند مشترک استفاده میکند و ارسال این پارامتر به بکند و لاگین sso">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/public/cap_module_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/public/cap_module_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface/moduleOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/moduleOptions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/config.client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/config.client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +28,12 @@
     &quot;assignee&quot;: &quot;Ghanavati7915&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Ghanavati7915/Cap-Module.git&quot;,
-    &quot;accountId&quot;: &quot;fbcd7ce8-b889-4aff-a477-9c44fe53ea14&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ghanavati7915/Cap-Module.git",
+    "accountId": "dad40edb-9bb7-4178-8e31-4fe61181207d"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -85,7 +90,7 @@
       <recent name="F:\Project\CAP\Cap-Module\src\runtime\composables" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.release">
+  <component name="RunManager" selected="npm.dev (۱)">
     <configuration name="dev (۱)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/playground/package.json" />
       <command value="run" />
@@ -138,8 +143,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.release" />
         <item itemvalue="npm.dev (۱)" />
+        <item itemvalue="npm.release" />
         <item itemvalue="npm.prepack" />
         <item itemvalue="npm.publish" />
         <item itemvalue="npm.dev" />
@@ -245,7 +250,9 @@
       <workItem from="1760943401343" duration="2561000" />
       <workItem from="1760955001308" duration="8000" />
       <workItem from="1761120537830" duration="2543000" />
-      <workItem from="1761125909979" duration="1937000" />
+      <workItem from="1761125909979" duration="4211000" />
+      <workItem from="1764670225315" duration="208000" />
+      <workItem from="1767704776192" duration="763000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -436,7 +443,21 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۲۷" />
       <updated>1761124872483</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL‎−۰۰۰۲۸" summary="- fix qs package">
+      <option name="closed" value="true" />
+      <created>1761136408545</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۸" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۸" />
+      <updated>1761136408545</updated>
+    </task>
+    <task id="LOCAL‎−۰۰۰۲۹" summary="2025-10-22&#10;🆕 Features&#10;&#10;پشتیبانی کامل از FormData:&#10;&#10;مقادیر متنی داخل FormData به اعداد انگلیسی تبدیل می‌شوند.&#10;&#10;فایل‌ها و Blobها بدون تغییر باقی می‌مانند.&#10;&#10;پشتیبانی از Form Body (application/x-www-form-urlencoded) بدون نیاز به پکیج qs.&#10;&#10;پشتیبانی از JSON Body و Query Params با تبدیل خودکار اعداد فارسی و عربی به انگلیسی.&#10;&#10;سازگاری کامل با Nuxt 3 و SSR بدون مشکل require is not defined.&#10;&#10;بهینه‌سازی Interceptor ها برای Request و Response:&#10;&#10;جلوگیری از تلاش بی‌پایان برای Refresh Token.&#10;&#10;مسیر Logout ایمن با پاکسازی IndexedDB.&#10;&#10;مدیریت خطاهای 401 و 403 با رفتار مشخص.&#10;&#10;⚡ Fixes&#10;&#10;حذف وابستگی به پکیج qs برای جلوگیری از مشکلات ESM / SSR.&#10;&#10;اصلاح تبدیل اعداد فارسی و عربی در همه‌ی مکان‌ها (URL, Query Params, Body).&#10;&#10;بهبود امنیت و جلوگیری از تغییر ناخواسته فایل‌ها در FormData.&#10;&#10;🧩 Improvements&#10;&#10;Region بندی کامل کد برای قابلیت خوانایی و نگهداری آسان.&#10;&#10;بهبود عملکرد و کاهش حجم پکیج با حذف وابستگی‌های غیرضروری.&#10;&#10;استانداردسازی تبدیل اعداد با تابع داخلی convertNumbersToEnglish.">
+      <option name="closed" value="true" />
+      <created>1761138468722</created>
+      <option name="number" value="LOCAL‎−۰۰۰۲۹" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۲۹" />
+      <updated>1761138468722</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,6 +488,8 @@
     <MESSAGE value="- Fix Response Of IndexDBGetAll Function" />
     <MESSAGE value="- disable Product Environment CaseSensitive&#10;- fix indexedDB Initialization Bug" />
     <MESSAGE value="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix convertNumbersToEnglish for FormData Request&#10;- make better axiosInstance.interceptors Functionality" />
+    <MESSAGE value="- fix qs package" />
+    <MESSAGE value="2025-10-22&#10; Features&#10;&#10;پشتیبانی کامل از FormData:&#10;&#10;مقادیر متنی داخل FormData به اعداد انگلیسی تبدیل می‌شوند.&#10;&#10;فایل‌ها و Blobها بدون تغییر باقی می‌مانند.&#10;&#10;پشتیبانی از Form Body (application/x-www-form-urlencoded) بدون نیاز به پکیج qs.&#10;&#10;پشتیبانی از JSON Body و Query Params با تبدیل خودکار اعداد فارسی و عربی به انگلیسی.&#10;&#10;سازگاری کامل با Nuxt 3 و SSR بدون مشکل require is not defined.&#10;&#10;بهینه‌سازی Interceptor ها برای Request و Response:&#10;&#10;جلوگیری از تلاش بی‌پایان برای Refresh Token.&#10;&#10;مسیر Logout ایمن با پاکسازی IndexedDB.&#10;&#10;مدیریت خطاهای 401 و 403 با رفتار مشخص.&#10;&#10;⚡ Fixes&#10;&#10;حذف وابستگی به پکیج qs برای جلوگیری از مشکلات ESM / SSR.&#10;&#10;اصلاح تبدیل اعداد فارسی و عربی در همه‌ی مکان‌ها (URL, Query Params, Body).&#10;&#10;بهبود امنیت و جلوگیری از تغییر ناخواسته فایل‌ها در FormData.&#10;&#10; Improvements&#10;&#10;Region بندی کامل کد برای قابلیت خوانایی و نگهداری آسان.&#10;&#10;بهبود عملکرد و کاهش حجم پکیج با حذف وابستگی‌های غیرضروری.&#10;&#10;استانداردسازی تبدیل اعداد با تابع داخلی convertNumbersToEnglish." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-10-22&#10; Features&#10;&#10;پشتیبانی کامل از FormData:&#10;&#10;مقادیر متنی داخل FormData به اعداد انگلیسی تبدیل می‌شوند.&#10;&#10;فایل‌ها و Blobها بدون تغییر باقی می‌مانند.&#10;&#10;پشتیبانی از Form Body (application/x-www-form-urlencoded) بدون نیاز به پکیج qs.&#10;&#10;پشتیبانی از JSON Body و Query Params با تبدیل خودکار اعداد فارسی و عربی به انگلیسی.&#10;&#10;سازگاری کامل با Nuxt 3 و SSR بدون مشکل require is not defined.&#10;&#10;بهینه‌سازی Interceptor ها برای Request و Response:&#10;&#10;جلوگیری از تلاش بی‌پایان برای Refresh Token.&#10;&#10;مسیر Logout ایمن با پاکسازی IndexedDB.&#10;&#10;مدیریت خطاهای 401 و 403 با رفتار مشخص.&#10;&#10;⚡ Fixes&#10;&#10;حذف وابستگی به پکیج qs برای جلوگیری از مشکلات ESM / SSR.&#10;&#10;اصلاح تبدیل اعداد فارسی و عربی در همه‌ی مکان‌ها (URL, Query Params, Body).&#10;&#10;بهبود امنیت و جلوگیری از تغییر ناخواسته فایل‌ها در FormData.&#10;&#10; Improvements&#10;&#10;Region بندی کامل کد برای قابلیت خوانایی و نگهداری آسان.&#10;&#10;بهبود عملکرد و کاهش حجم پکیج با حذف وابستگی‌های غیرضروری.&#10;&#10;استانداردسازی تبدیل اعداد با تابع داخلی convertNumbersToEnglish." />
   </component>
 </project>

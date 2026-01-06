@@ -8,6 +8,10 @@ export default interface ModuleOptions {
   client_id: string;
   //#endregion
 
+  //#region App Code for authentication purposes And API.
+  app_code: string;
+  //#endregion
+
   //#region Flag to indicate if multiple tokens are supported.
   is_multi_token: boolean;
   //#endregion

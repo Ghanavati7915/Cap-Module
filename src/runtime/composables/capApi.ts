@@ -50,7 +50,8 @@ export function useCapApi() {
         baseURL: base_url.value,
         withCredentials: true,
         headers: {
-          Authorization: access_token.value ? `Bearer ${access_token.value}` : ''
+          Authorization: access_token.value ? `Bearer ${access_token.value}` : null,
+          AppCode: CapModule.app_code ? CapModule.app_code : null,
         }
       });
     } else {

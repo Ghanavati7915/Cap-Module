@@ -73,6 +73,7 @@ Finally, add **CapModule** Json Object Property to the Nuxt Config section of yo
 export default defineNuxtConfig({
   CapModule: {
     client_id:'',
+    app_code:'',
     is_multi_token: true,
     environment: "Development",
     extra: [ { refreshTime: 10 } , ... ],
@@ -237,6 +238,7 @@ For this, create a file called **cap_module_config.json** in the **public** fold
 ```javascript
 {
   "client_id": "...",
+  "app_code": "...",
   "is_multi_token": true,
   "environment": "Development", 
   "extra": [ { "refreshTime" : 10 } ],
@@ -266,23 +268,24 @@ The advantage of this work is that when the output from the project is prepared 
 
 
 ## Setting
-| **Key**                                 | **Type**   | **Default** | **Description**                                                                                                               |
-|-----------------------------------------|------------|-------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `client_id`                             | `string`   | empty       | The key agreed between the IDM service and your project to start SSO authentication services                                  |
-| `is_multi_token`                        | `boolean`  | false       | Are there more than one tokens received from BackEnd? Default is false                                                        |
+| **Key**                                 | **Type**   | **Default** | **Description**                                                                                                              |
+|-----------------------------------------|------------|-------------|------------------------------------------------------------------------------------------------------------------------------|
+| `client_id`                             | `string`   | empty       | The key agreed between the IDM service and your project to start SSO authentication services                                 |
+| `app_code`                              | `string`   | empty       | The key agreed between the IDM service and your project to start SSO authentication services And API                         |
+| `is_multi_token`                        | `boolean`  | false       | Are there more than one tokens received from BackEnd? Default is false                                                       |
 | `environment`                           | `string`   | empty       | The current working environment of the programmer to use the parameters . Default is Development ( Production / Development ) |
-| `extra`                                 | `any[]`    | empty       | Fill This Field With Custom Data in Array Type And Use Anywhere in Your Project Directly.                                     |
-| `database.version`                      | `number`   | 1           | The version of the database that will be created for the project in the browser                                               |
-| `database.db_name`                      | `string`   | empty       | The title of the database that will be created for the project in the browser                                                 |
-| `database.tables_name`                  | `string[]` | empty       | The title of the database tables that will be created for the project in the database ( config is necessary )                 |
-| `api_methods.user_info`                 | `string`   | empty       | The address related to the method of receiving user information who has logged in (in Production)                             |
-| `api_methods.authorization_by_app_code` | `string`   | empty       | The address related to the method of receiving the token from the HUB (in Production)                                         |
-| `production.base_url`                   | `string`   | empty       | The address related to the BackEnd of the project (in Production)                                                             |
-| `production.redirect_uri`               | `string`   | empty       | The address of the user hosting page that HUB returns to the project (in Production)                                          |
-| `production.sso_site_url`               | `string`   | empty       | The address of the HUB page to perform login and register operations (in Production)                                          |
-| `development.base_url`                  | `string`   | empty       | The address related to the BackEnd of the project (in Development)                                                            |
-| `development.redirect_uri`              | `string`   | empty       | The address of the user hosting page that HUB returns to the project (in Development)                                         |
-| `development.sso_site_url`              | `string`   | empty       | The address of the HUB page to perform login and register operations (in Development)                                         |
+| `extra`                                 | `any[]`    | empty       | Fill This Field With Custom Data in Array Type And Use Anywhere in Your Project Directly.                                    |
+| `database.version`                      | `number`   | 1           | The version of the database that will be created for the project in the browser                                              |
+| `database.db_name`                      | `string`   | empty       | The title of the database that will be created for the project in the browser                                                |
+| `database.tables_name`                  | `string[]` | empty       | The title of the database tables that will be created for the project in the database ( config is necessary )                |
+| `api_methods.user_info`                 | `string`   | empty       | The address related to the method of receiving user information who has logged in (in Production)                            |
+| `api_methods.authorization_by_app_code` | `string`   | empty       | The address related to the method of receiving the token from the HUB (in Production)                                        |
+| `production.base_url`                   | `string`   | empty       | The address related to the BackEnd of the project (in Production)                                                            |
+| `production.redirect_uri`               | `string`   | empty       | The address of the user hosting page that HUB returns to the project (in Production)                                         |
+| `production.sso_site_url`               | `string`   | empty       | The address of the HUB page to perform login and register operations (in Production)                                         |
+| `development.base_url`                  | `string`   | empty       | The address related to the BackEnd of the project (in Development)                                                           |
+| `development.redirect_uri`              | `string`   | empty       | The address of the user hosting page that HUB returns to the project (in Development)                                        |
+| `development.sso_site_url`              | `string`   | empty       | The address of the HUB page to perform login and register operations (in Development)                                        |
 
 ## Thank You
 Thanks to all colleagues of [CAP Company](https://i-cap.ir)

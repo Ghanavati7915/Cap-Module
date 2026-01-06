@@ -10,6 +10,7 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options for the Nuxt module
   defaults: {
     client_id: '',
+    app_code: '',
     is_multi_token: false,
     environment: 'Development',
     database:{

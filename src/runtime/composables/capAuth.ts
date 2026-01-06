@@ -13,6 +13,7 @@ export function useCapAuth() {
   const tables = ref(CapModule.database.tables_name); // DataBase Tables Name from CapModule
 
   const client_id = ref(CapModule.client_id); // Client ID from CapModule
+  const app_code = ref(CapModule.app_code); // App Code from CapModule
   const is_multi_token = ref(CapModule.is_multi_token); // Multi-token support flag from CapModule
   const redirect_uri_production = ref(CapModule.production.redirect_uri); // Redirect URI for production
   const redirect_uri_development = ref(CapModule.development.redirect_uri); // Redirect URI for development
@@ -39,7 +40,7 @@ export function useCapAuth() {
       if (redirect_to_internal_page) internalRedirect = `?internalPage=${redirect_to_internal_page}`
 
       // Redirect to SSO site with the appropriate parameters
-      window.location.href = `${environment.value == 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/oauth/auth?protocol=${protocol.value}&response_type=${response_type.value}&${access_type.value}&client_id=${client_id.value}&redirect_uri=${environment.value === 'Production' ? redirect_uri_production.value + internalRedirect : redirect_uri_development.value + internalRedirect }&scope=${scope.value}&state=${state.value}&${code_challenge_method.value}`;
+      window.location.href = `${environment.value == 'Production' ? sso_site_url_production.value : sso_site_url_development.value}/oauth/auth?protocol=${protocol.value}&response_type=${response_type.value}&${access_type.value}&client_id=${client_id.value}&sub_app_code=${app_code.value}&redirect_uri=${environment.value === 'Production' ? redirect_uri_production.value + internalRedirect : redirect_uri_development.value + internalRedirect }&scope=${scope.value}&state=${state.value}&${code_challenge_method.value}`;
     }
   };
   //#endregion

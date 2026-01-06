@@ -20,6 +20,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     CapModule.database.db_name = configData.database.db_name;
     CapModule.database.tables_name = configData.database.tables_name;
     CapModule.client_id = configData.client_id;
+    CapModule.app_code = configData.app_code;
     CapModule.is_multi_token = configData.is_multi_token;
     CapModule.environment = configData.environment;
     CapModule.extra = configData.extra;
