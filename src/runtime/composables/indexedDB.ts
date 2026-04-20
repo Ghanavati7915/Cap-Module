@@ -84,7 +84,8 @@ export const IndexDBInsert = async (
   tableName: string,
   field: string,
   value: any,
-  ExpireTime: number | null = null
+  ExpireTime: number | null = null,
+  inMilisecondTime: boolean | null = false
 ) => {
   try {
     await withRetry(async () => {
@@ -96,8 +97,12 @@ export const IndexDBInsert = async (
         store.put(value, field);
 
         if (ExpireTime) {
-          const expireAt = Date.now() + ExpireTime * 1000;
-          store.put(expireAt, `${field}_expireAt`);
+          if (inMilisecondTime){
+            store.put(ExpireTime, `${field}_expireAt`);
+          }else{
+            const expireAt = Date.now() + ExpireTime * 1000;
+            store.put(expireAt, `${field}_expireAt`);
+          }
         }
 
         trans.oncomplete = () => resolve();

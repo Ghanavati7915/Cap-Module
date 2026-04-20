@@ -3,6 +3,7 @@
 import { ref } from 'vue'; // ref From Vue
 // @ts-ignore
 import CapModule from '#capModule'; // Import CapModule for configuration details
+import { jwtDecode, type JwtPayload } from "jwt-decode";
 import { useCapApi } from './capApi'; // Import the Cap API utility
 import {IndexDBInsert, IndexDBGet, IndexDBRemove, IndexDBClear} from "./indexedDB"; // Import IndexedDB utilities
 //#endregion
@@ -100,29 +101,38 @@ export function useCapAuth() {
   // Function to renew Token
   const refreshToken = async () => {
     try {
-      let capAPI = useCapApi(); // Get the Cap API instance
-      let currentAccessToken = await IndexDBGet('config' , 'Access-Token');
-      let currentRefreshToken = await IndexDBGet('config' , 'Refresh-Token');
+      const capAPI = useCapApi();
+      const [currentAccessToken, currentRefreshToken] = await Promise.all([
+        IndexDBGet('config', 'Access-Token'),
+        IndexDBGet('config', 'Refresh-Token')
+      ]);
 
-      const { data } = await (await capAPI.useAPI(false))({ method: 'post', url: CapModule.api_methods.refresh_token , data: {
+      if (!currentAccessToken || !currentRefreshToken) {
+        console.error('Missing tokens for refresh');
+        return { result: false, message: 'Missing tokens' };
+      }
+
+      const { data } = await (await capAPI.useAPI(false))({
+        method: 'post',
+        url: CapModule.api_methods.refresh_token,
+        data: {
           accessToken: currentAccessToken,
           refreshToken: currentRefreshToken,
-        } });
-      if (data) {
-        await IndexDBInsert('config', 'Access-Token', data.accessToken, data.accessTokenExpiresIn);
-        await IndexDBInsert('config', 'Refresh-Token', data.refreshToken, data.refreshTokenExpiresIn);
+        }
+      });
 
-        setTimeout(async () => {
-          await userInfo();
-        },1000);
-
-        return { result: true, accessToken : data.accessToken };
-      } else {
+      if (!data) {
         return { result: false, message: 'Refresh Token Error' };
       }
-    } catch (e) {
-      console.log('refreshToken Error : ' , e)
-      return { result: false };
+
+      await processAndSaveTokens(data);
+      await refreshUserProfile();
+
+      return { result: true, accessToken: data.accessToken };
+
+    } catch (error) {
+      console.error('refreshToken Error:', error);
+      return { result: false, message: error instanceof Error ? error.message : 'Unknown error' };
     }
   };
   //#endregion
@@ -131,7 +141,7 @@ export function useCapAuth() {
   // Function to handle authorization using app code
   const authorizationByAppCode = async (code: string) => {
     try {
-      let capAPI = useCapApi(); // Get the Cap API instance
+      const capAPI = useCapApi();
       const { data } = await (await capAPI.useAPI(false))({
         method: 'post',
         url: CapModule.api_methods.authorization_by_app_code,
@@ -141,31 +151,30 @@ export function useCapAuth() {
         }
       });
 
-      if (data) {
-        if (is_multi_token.value && data.length > 0) {
-          let token = data.find((item: any) => item.isDefault === true) || data[0];
-
-          await IndexDBInsert('config', 'Access-Token', token.accessToken, token.accessTokenExpiresIn);
-          await IndexDBInsert('config', 'Refresh-Token', token.refreshToken, token.refreshTokenExpiresIn);
-          await IndexDBInsert('config', 'All-Tokens', data, token.accessTokenExpiresIn);
-
-          const profile = await userInfo();
-          return profile.result ? { result: true } : { result: false, message: 'Profile Error' };
-        }
-        else if (!is_multi_token.value) {
-          const token = data;
-          await IndexDBInsert('config', 'Access-Token', token.accessToken, token.accessTokenExpiresIn);
-          await IndexDBInsert('config', 'Refresh-Token', token.refreshToken, token.refreshTokenExpiresIn);
-
-          const profile = await userInfo();
-          return profile.result ? { result: true } : { result: false, message: 'Profile Error' };
-        } else return { result: false, message: 'Token Error' };
-      } else {
-        return { result: false, message: 'Data NotFound & Error' };
+      if (!data) {
+        return { result: false, message: 'Data Not Found' };
       }
 
-    } catch (e) {
-      console.error('CAP Module API Caller Error :', e);
+      // Handle multi-token scenario
+      if (is_multi_token.value) {
+        if (!Array.isArray(data) || data.length === 0) {
+          return { result: false, message: 'Token Error' };
+        }
+
+        const token = findDefaultToken(data);
+        await processAndSaveTokens(token);
+        await IndexDBInsert('config', 'All-Tokens', data);
+      }
+      // Handle single token scenario
+      else {
+        await processAndSaveTokens(data);
+      }
+
+      await refreshUserProfile();
+      return { result: true };
+
+    } catch (error) {
+      console.error('CAP Module API Caller Error:', error);
       return { result: false, message: 'Login Error' };
     }
   };
@@ -210,6 +219,40 @@ export function useCapAuth() {
     catch (e) {
       return null ;
     }
+  };
+  //#endregion
+
+
+  //#region Helper function to process tokens and save to IndexDB
+  const processAndSaveTokens = async (tokenData: any) => {
+    const JWT_AT: any = jwtDecode<JwtPayload>(tokenData.accessToken);
+    let NOWDate = new Date((JWT_AT.exp * 1000));
+    NOWDate.setSeconds(NOWDate.getSeconds() - tokenData.accessTokenExpiresIn);
+    NOWDate.setSeconds(NOWDate.getSeconds() + tokenData.refreshTokenExpiresIn);
+    const refreshTokenExpiry = NOWDate.getTime();
+
+    await Promise.all([
+      IndexDBInsert('config', 'Access-Token', tokenData.accessToken),
+      IndexDBInsert('config', 'Refresh-Token', tokenData.refreshToken, refreshTokenExpiry, true)
+    ]);
+
+    return refreshTokenExpiry;
+  };
+  //#endregion
+
+  //#region Helper function to handle user profile after token refresh
+  const refreshUserProfile = async () => {
+    const profile = await userInfo();
+    if (!profile.result) {
+      throw new Error('Profile Error');
+    }
+    return true;
+  };
+  //#endregion
+
+  //#region Helper to find default token
+  const findDefaultToken = (tokens: any[]) => {
+    return tokens.find((item: any) => item.isDefault === true) || tokens[0];
   };
   //#endregion
 
