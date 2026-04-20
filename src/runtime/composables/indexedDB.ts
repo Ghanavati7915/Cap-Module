@@ -143,25 +143,37 @@ export const IndexDBRemove = async (Table: string, field: string) => {
 export const IndexDBGet = async (Table: string, field: string) => {
   try {
     const db = await IndexDB();
-    return new Promise<any>((resolve, reject) => {
-      const trans = db.transaction([Table], "readonly");
-      const store = trans.objectStore(Table);
-      const req = store.get(field);
+    const trans = db.transaction([Table], "readonly");
+    const store = trans.objectStore(Table);
 
-      req.onsuccess = () => {
-        const expireReq = store.get(`${field}_expireAt`);
-        expireReq.onsuccess = () => {
-          const expireAt = expireReq.result;
-          if (expireAt && Date.now() > expireAt) {
-            resolve(null); // داده منقضی شده
-          } else {
-            resolve(req.result);
-          }
-        };
-      };
-      req.onerror = (e) => reject(e);
-    });
-  } catch (e) {
+    // دریافت همزمان داده و زمان انقضا
+    const [data, expireAt] = await Promise.all([
+      new Promise<any>((resolve) => {
+        const req = store.get(field);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => resolve(null);
+      }),
+      new Promise<number | null>((resolve) => {
+        const req = store.get(`${field}_expireAt`);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => resolve(null);
+      })
+    ]);
+
+    // بررسی انقضا
+    if (expireAt && Date.now() > expireAt) {
+      // حذف داده منقضی شده با استفاده از متد IndexDBRemove
+      await Promise.all([
+        IndexDBRemove(Table, field),
+        IndexDBRemove(Table, `${field}_expireAt`)
+      ]);
+      return null;
+    }
+
+    return data;
+
+  } catch (error) {
+    console.error('IndexDBGet Error:', error);
     return null;
   }
 };

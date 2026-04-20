@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="اضافه شدن پارامتر app_code در cap_module_config به جهت تفکیک برنامه هایی که از بکند مشترک استفاده میکند و ارسال این پارامتر به بکند و لاگین sso">
+    <list default="true" id="f63caf00-be2a-4cea-acde-19b5e424347c" name="Changes" comment="اصلاح زمان انقضا در RefreshToken ها &#10;حذف زمان انقضا در AccessToken&#10;محاسبه زمان refresh با پایه زمان AccessToken و سرور صادر کننده">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/capApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/composables/indexedDB.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -252,7 +250,7 @@
       <workItem from="1767704776192" duration="1067000" />
       <workItem from="1769933648053" duration="2376000" />
       <workItem from="1776679863682" duration="954000" />
-      <workItem from="1776689975928" duration="7649000" />
+      <workItem from="1776689975928" duration="8307000" />
     </task>
     <task id="LOCAL‎−۰۰۰۰۱" summary="- update readme&#10;- fix publish problem">
       <option name="closed" value="true" />
@@ -464,7 +462,14 @@
       <option name="presentableId" value="LOCAL‎−۰۰۰۳۰" />
       <updated>1767705578612</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL‎−۰۰۰۳۱" summary="اصلاح زمان انقضا در RefreshToken ها &#10;حذف زمان انقضا در AccessToken&#10;محاسبه زمان refresh با پایه زمان AccessToken و سرور صادر کننده">
+      <option name="closed" value="true" />
+      <created>1776698874998</created>
+      <option name="number" value="LOCAL‎−۰۰۰۳۱" />
+      <option name="presentableId" value="LOCAL‎−۰۰۰۳۱" />
+      <updated>1776698874998</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- fix bugs" />
     <MESSAGE value="- add redirect To InternalPage Field in Login Function&#10;- fix some issue" />
     <MESSAGE value="- fix some issue&#10;- update Readme" />
     <MESSAGE value="- fix some issue" />
@@ -497,6 +501,7 @@
     <MESSAGE value="- fix qs package" />
     <MESSAGE value="2025-10-22&#10; Features&#10;&#10;پشتیبانی کامل از FormData:&#10;&#10;مقادیر متنی داخل FormData به اعداد انگلیسی تبدیل می‌شوند.&#10;&#10;فایل‌ها و Blobها بدون تغییر باقی می‌مانند.&#10;&#10;پشتیبانی از Form Body (application/x-www-form-urlencoded) بدون نیاز به پکیج qs.&#10;&#10;پشتیبانی از JSON Body و Query Params با تبدیل خودکار اعداد فارسی و عربی به انگلیسی.&#10;&#10;سازگاری کامل با Nuxt 3 و SSR بدون مشکل require is not defined.&#10;&#10;بهینه‌سازی Interceptor ها برای Request و Response:&#10;&#10;جلوگیری از تلاش بی‌پایان برای Refresh Token.&#10;&#10;مسیر Logout ایمن با پاکسازی IndexedDB.&#10;&#10;مدیریت خطاهای 401 و 403 با رفتار مشخص.&#10;&#10;⚡ Fixes&#10;&#10;حذف وابستگی به پکیج qs برای جلوگیری از مشکلات ESM / SSR.&#10;&#10;اصلاح تبدیل اعداد فارسی و عربی در همه‌ی مکان‌ها (URL, Query Params, Body).&#10;&#10;بهبود امنیت و جلوگیری از تغییر ناخواسته فایل‌ها در FormData.&#10;&#10; Improvements&#10;&#10;Region بندی کامل کد برای قابلیت خوانایی و نگهداری آسان.&#10;&#10;بهبود عملکرد و کاهش حجم پکیج با حذف وابستگی‌های غیرضروری.&#10;&#10;استانداردسازی تبدیل اعداد با تابع داخلی convertNumbersToEnglish." />
     <MESSAGE value="اضافه شدن پارامتر app_code در cap_module_config به جهت تفکیک برنامه هایی که از بکند مشترک استفاده میکند و ارسال این پارامتر به بکند و لاگین sso" />
-    <option name="LAST_COMMIT_MESSAGE" value="اضافه شدن پارامتر app_code در cap_module_config به جهت تفکیک برنامه هایی که از بکند مشترک استفاده میکند و ارسال این پارامتر به بکند و لاگین sso" />
+    <MESSAGE value="اصلاح زمان انقضا در RefreshToken ها &#10;حذف زمان انقضا در AccessToken&#10;محاسبه زمان refresh با پایه زمان AccessToken و سرور صادر کننده" />
+    <option name="LAST_COMMIT_MESSAGE" value="اصلاح زمان انقضا در RefreshToken ها &#10;حذف زمان انقضا در AccessToken&#10;محاسبه زمان refresh با پایه زمان AccessToken و سرور صادر کننده" />
   </component>
 </project>

@@ -185,7 +185,7 @@ export function useCapApi() {
         }
 
         if (error.response && error.response.status === 403) {
-          router.push(`/error?statusCode=403`);
+          await router.push(`/error?statusCode=403`);
         }
 
         return Promise.reject(error);
